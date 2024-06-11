@@ -1,0 +1,61 @@
+@import url("./styles/foniran");
+
+#root {
+  font-family: IRANSans;
+}
+
+#root {
+  /* max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem; 
+  text-align: center; */
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 100vw;
+  margin-top: 0;
+  position: fixed;
+  top: 0px;
+}
+.HeaderBanner {
+  text-align: right;
+  width: 10wv;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: right;
+}
+
+.margin-right-20 {
+  margin-right: 20px !important;
+}
+@font-face {
+  font-family: "FontAwesome";
+  src: url("../src/assets/fonts/webfonts/fa-brands-400.ttf");
+  src: url("../src/assets/fonts/webfonts/fa-brands-400.woff2"),
+    url("../src/assets/fonts/webfonts/fa-solid-900.woff2") format("woff"),
+    url("../src/assets/fonts/webfonts/fa-solid-900.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon .Calculate::before {
+  content: "\F1E0";
+  font-family: "Font Awesome\ 5 Free" !important; /* یا هر فونت دیگری که استفاده میکنید */
+  font-weight: 900; /* برای نمایش آیکونهای solid */
+}
+
+.width-9 {
+  width: 9em !important;
+}
+
+.width-12 {
+  width: 13em !important;
+}
+
+.pad-inline-10 {
+  padding: 0px !important;
+}
+
+.margin-inline-7 {
+  margin-inline: 10px;
+}
