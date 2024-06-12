@@ -19,6 +19,7 @@ import {
   JobSeekingType,
 } from "./Constant/MainPage/Text/index";
 import AnimatedCounter from "./Constant/MainPage/Counter/AnimatedCounter";
+import { difference } from "lodash/difference";
 function App() {
   //refs
   const textRefJobSeeking = React.useRef();
@@ -44,7 +45,7 @@ function App() {
     height: window.innerHeight,
     width: window.innerWidth,
   });
-
+  const [selectedGroups, setSelectedGroups] = useState([]);
   ////////////////////////states
   //options
   const CityOptions = [
@@ -209,6 +210,7 @@ function App() {
               }`}
             >
               <Form.Control
+                tabIndex={1}
                 dir="rtl"
                 type="search"
                 placeholder="...عنوان شغلی یا شرکت"
@@ -223,6 +225,7 @@ function App() {
               }`}
             >
               <Select
+                tabIndex={2}
                 className={`${
                   isDesktop ? "p-4" : ""
                 }basic-single margin-top-60 `}
@@ -246,6 +249,7 @@ function App() {
               }`}
             >
               <Select
+                tabIndex={3}
                 className={`${
                   isDesktop ? "p-4" : ""
                 }basic-single margin-top-60 `}
@@ -273,6 +277,7 @@ function App() {
                 }`}
               >
                 <Select
+                  tabIndex={4}
                   className={`${
                     isDesktop ? "p-4" : ""
                   }basic-single margin-top-60 `}
