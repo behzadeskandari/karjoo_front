@@ -21,7 +21,12 @@ export default function Carousel() {
     {
       image: "https://picsum.photos/700/600",
       title: "This is a third title",
-      description: "This is a third description",
+      description: (
+        <span>
+          {" "}
+          <button>button</button>This is a third description
+        </span>
+      ),
       clickEvent: sliderClick,
     },
     {

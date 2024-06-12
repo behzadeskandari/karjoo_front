@@ -14,6 +14,10 @@ import HeaderAndNavigationMenu from "./components/Menu/HeaderAndNavigationMenu";
 import Carousel from "./components/Carousel/Carousel";
 import { JobCategoryOptions } from "./Constant/MainPage/DropDown/JobCategory";
 import {
+  CityOptions,
+  ProvinceOptions,
+} from "./Constant/MainPage/DropDown/CityCategory";
+import {
   HeaderBanner,
   HeaderBannerCity,
   JobSeekingType,
@@ -21,41 +25,37 @@ import {
 import AnimatedCounter from "./Constant/MainPage/Counter/AnimatedCounter";
 import { difference } from "lodash/difference";
 function App() {
-  //refs
+  // region refs
   const textRefJobSeeking = React.useRef();
   const textRefHeaderBannerCity = React.useRef();
   const textRefHeaderBanner = React.useRef();
   const numberRefCounterResume = React.useRef();
   const numberRefCounterCity = React.useRef();
-  //refs
-  ////////////////////////states
+  //end region refs
+  // region states
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 768px)").matches
   );
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 900);
   const [isClearable, setIsClearable] = useState(true);
   const [isSearchable, setIsSearchable] = useState(true);
   const [isDisabled, setIsDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isRtl, setIsRtl] = useState(true);
-  const [isSetColor, setIsColor] = useState();
   const [isShowProvince, setIsShowProvince] = useState(false);
-  const [province, setProvince] = useState();
+  const [province, setProvince] = useState(null);
   const [dimensions, setDimensions] = React.useState({
     height: window.innerHeight,
     width: window.innerWidth,
   });
-  const [selectedGroups, setSelectedGroups] = useState([]);
+  const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedProvince, setSelectedProvince] = useState(null);
+  const [cityOptions, setCityOptions] = useState([]);
   ////////////////////////states
   //options
-  const CityOptions = [
-    { value: "1", label: "تهران" },
-    { value: "2", label: "البرز" },
-    { value: "3", label: "آذربایجان غربی" },
-    { value: "4", label: "آذربایجان شرقی" },
-  ];
+
   //options
-  //Effects
+  //region Effects
   useEffect(() => {
     const debouncedHandleResize = debounce(function handleResize() {
       setDimensions({
@@ -64,11 +64,11 @@ function App() {
       });
     }, 50);
 
-    if (dimensions.width < 900) {
-      setIsDesktop(false);
-    } else {
-      setIsDesktop(true);
-    }
+    // if (dimensions.width < 900) {
+    //   setIsDesktop(false);
+    // } else {
+    //   setIsDesktop(true);
+    // }
     window.addEventListener("resize", debouncedHandleResize);
 
     return (_) => {
@@ -85,7 +85,7 @@ function App() {
         numberRefCounterResume,
         numberRefCounterCity
       );
-    }, 1000);
+    }, 2000);
 
     return () => {
       clearInterval(intervalId);
@@ -93,7 +93,7 @@ function App() {
   }, []);
 
   //Effects
-  //Arrays
+  //region Arrays
 
   const colors = ["#e74c3c", "#8e44ad", "#3498db", "#e67e22", "#2ecc71"];
   const colorsText = [
@@ -119,25 +119,25 @@ function App() {
     const color = getRandomColor(1);
     if (textRefJobSeeking.current) {
       textRefJobSeeking.current.style.color = color;
-      textRefJobSeeking.current.style.transition = "3s";
+      textRefJobSeeking.current.style.transition = "4s";
     }
     if (textRefHeaderBannerCity.current) {
       textRefHeaderBannerCity.current.style.color = color;
-      textRefHeaderBannerCity.current.style.transition = "3s";
+      textRefHeaderBannerCity.current.style.transition = "4s";
     }
     if (textRefHeaderBanner.current) {
       textRefHeaderBanner.current.style.color = color;
-      textRefHeaderBanner.current.style.transition = "3s";
+      textRefHeaderBanner.current.style.transition = "4s";
     }
     const colorstext = getRandomColor(2);
     if (numberRefCounterResume.current) {
       numberRefCounterResume.current.style.color = colorstext;
-      numberRefCounterResume.current.style.transition = "3s";
+      numberRefCounterResume.current.style.transition = "4s";
     }
     //console.log(numberRefCounterCity, "numberRefCounterCity");
     if (numberRefCounterCity.current) {
       numberRefCounterCity.current.style.color = colorstext;
-      numberRefCounterCity.current.style.transition = "3s";
+      numberRefCounterCity.current.style.transition = "4s";
     }
   }
 
@@ -160,19 +160,40 @@ function App() {
   }
 
   const handleProvinceChange = (data) => {
-    console.log(data, "handleProvince");
-    if (data.value) {
-      setProvince(data);
+    // console.log(data, "handleProvince");
+    // setProvince(data);
+    // setSelectedProvince(data);
+    // const cities = data ? ProvinceOptions[data.value] || [] : [];
+    // setCityOptions(cities);
+    // // if (data && data.value) {
+    // //   setIsShowProvince(true);
+    // // } else {
+    // //   setIsShowProvince(false);
+    // // }
+    setSelectedProvince(data);
+    const cities = data ? ProvinceOptions[data.value] || [] : [];
+    setCityOptions(cities);
+    if (data && data.value) {
       setIsShowProvince(true);
+    } else {
+      setIsShowProvince(false);
     }
   };
+  const handleCityChange = (data) => {
+    setSelectedCity(data);
+    // Reset province selection when city changes
+    setSelectedProvince(null);
+    setCityOptions([]);
+    setIsShowProvince(false);
+  };
   //end region Func
-
+  //region return
   return (
     <>
       <CssBaseline />
       <HeaderAndNavigationMenu />
       <div style={{ padding: "16px", textAlign: "right" }}>
+        {/* header Text ANd Number */}
         <h1>
           <div className="HeaderBanner">
             <span ref={textRefHeaderBanner}>{HeaderBanner}</span>
@@ -194,6 +215,9 @@ function App() {
         <h3 className="margin-top-60 textholder" ref={textRefJobSeeking}>
           {JobSeekingType}
         </h3>
+        {/* header Text ANd Number */}
+
+        {/* MainDropDown */}
         <section className="row">
           <div
             className={`${
@@ -213,7 +237,7 @@ function App() {
                 tabIndex={1}
                 dir="rtl"
                 type="search"
-                placeholder="...عنوان شغلی یا شرکت"
+                placeholder="عنوان شغلی یا شرکت..."
                 className={`margin-top-60 ${isDesktop ? "mt-4" : ""}`}
               />
             </div>
@@ -230,7 +254,7 @@ function App() {
                   isDesktop ? "p-4" : ""
                 }basic-single margin-top-60 `}
                 classNamePrefix="select"
-                defaultValue={JobCategoryOptions[0]}
+                //defaultValue={JobCategoryOptions[0]}
                 isDisabled={isDisabled}
                 isLoading={isLoading}
                 isClearable={isClearable}
@@ -254,7 +278,7 @@ function App() {
                   isDesktop ? "p-4" : ""
                 }basic-single margin-top-60 `}
                 classNamePrefix="select"
-                defaultValue={CityOptions[0]}
+                //defaultValue={CityOptions[0]}
                 isDisabled={isDisabled}
                 isLoading={isLoading}
                 isClearable={isClearable}
@@ -263,12 +287,14 @@ function App() {
                 name="City"
                 onChange={(e) => handleProvinceChange(e)}
                 options={CityOptions}
-                placeholder={"شهر"}
+                getOptionLabel={(option) => option.label}
+                getOptionValue={(option) => option.value}
+                placeholder={"استان"}
               />
             </div>
           </div>
           <div className="col-md-12 d-flex justify-content-center">
-            {isShowProvince == true ? (
+            {isShowProvince && (
               <div
                 className={`${
                   isDesktop
@@ -282,18 +308,22 @@ function App() {
                     isDesktop ? "p-4" : ""
                   }basic-single margin-top-60 `}
                   classNamePrefix="select"
-                  defaultValue={CityOptions[0]}
+                  //defaultValue={CityOptions[0]}
                   isDisabled={isDisabled}
                   isLoading={isLoading}
                   isClearable={isClearable}
                   isRtl={isRtl}
                   isSearchable={isSearchable}
-                  name="City"
-                  options={CityOptions}
-                  placeholder={"استان"}
+                  name="Province"
+                  value={selectedProvince}
+                  onChange={handleCityChange}
+                  options={cityOptions}
+                  getOptionLabel={(option) => option.label}
+                  getOptionValue={(option) => option.value}
+                  placeholder={"شهر"}
                 />
               </div>
-            ) : null}
+            )}
           </div>
         </section>
         <Carousel />

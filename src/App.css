@@ -60,21 +60,21 @@
   margin-inline: 10px;
 }
 
-.textholder{
-  transition: 3s ease;
-  -webkit-transition: 3s ease;
-  -moz-transition: 3s ease;
-  -ms-transition: 3s ease;
-  -o-transition: 3s ease;
+.textholder {
+  transition: 5s ease;
+  -webkit-transition: 5s ease;
+  -moz-transition: 5s ease;
+  -ms-transition: 5s ease;
+  -o-transition: 5s ease;
 }
 
-.textholder:hover{
+.textholder:hover {
   transition-duration: 0s;
 }
 
-.color-blue{
+.color-blue {
   color: blue;
 }
-.padd-text{
+.padd-text {
   padding: 0px 7px 0px 7px;
 }
