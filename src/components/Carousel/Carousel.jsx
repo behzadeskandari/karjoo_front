@@ -56,8 +56,11 @@ export default function Carousel() {
   ];
 
   return (
-    <div className="d-flex justify-content-center">
-      <ReactCardSlider slides={slides} />
+    // style={{ marginTop: "9em" }}
+    <div className="row">
+      <div className="d-flex justify-content-center ">
+        <ReactCardSlider slides={slides} />
+      </div>
     </div>
   );
 }

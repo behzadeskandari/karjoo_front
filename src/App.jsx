@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CssBaseline } from "@mui/material";
+import { Box, CssBaseline, Toolbar, Typography } from "@mui/material";
 // import MenuIcon from "@mui/icons-material/Menu";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import CalculateIcon from "@mui/icons-material/Calculate";
@@ -36,7 +36,8 @@ function App() {
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 768px)").matches
   );
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 900);
+  const [isDesktop, setIsDesktop] = useState(false);
+
   const [isClearable, setIsClearable] = useState(true);
   const [isSearchable, setIsSearchable] = useState(true);
   const [isDisabled, setIsDisabled] = useState(false);
@@ -64,11 +65,13 @@ function App() {
       });
     }, 50);
 
-    // if (dimensions.width < 900) {
-    //   setIsDesktop(false);
-    // } else {
-    //   setIsDesktop(true);
-    // }
+    if (dimensions.width < 900) {
+      setIsDesktop(false);
+      setIsClearable(true);
+    } else {
+      setIsDesktop(true);
+      setIsClearable(false);
+    }
     window.addEventListener("resize", debouncedHandleResize);
 
     return (_) => {
@@ -180,11 +183,17 @@ function App() {
     }
   };
   const handleCityChange = (data) => {
+    console.log(data, "datadatadata");
     setSelectedCity(data);
     // Reset province selection when city changes
-    setSelectedProvince(null);
-    setCityOptions([]);
-    setIsShowProvince(false);
+    if (data == null) {
+      setSelectedProvince(null);
+    } else if (data && data.value) {
+      setSelectedProvince(data);
+    }
+    //
+    //setCityOptions([]);
+    //setIsShowProvince(false);
   };
   //end region Func
   //region return
@@ -192,142 +201,151 @@ function App() {
     <>
       <CssBaseline />
       <HeaderAndNavigationMenu />
-      <div style={{ padding: "16px", textAlign: "right" }}>
-        {/* header Text ANd Number */}
-        <h1>
-          <div className="HeaderBanner">
-            <span ref={textRefHeaderBanner}>{HeaderBanner}</span>
-            <span className="color-blue">
-              <AnimatedCounter
-                targetNumber={50507}
-                ref={numberRefCounterResume}
-              />
-            </span>
-          </div>
-          <div className="HeaderBanner">
-            <span ref={textRefHeaderBannerCity}>{HeaderBannerCity}</span>
-            <span className="color-blue padd-text">
-              <AnimatedCounter targetNumber={505} ref={numberRefCounterCity} />
-            </span>
-          </div>
-        </h1>
-        {/* ImageTAG Goes Here */}
-        <h3 className="margin-top-60 textholder" ref={textRefJobSeeking}>
-          {JobSeekingType}
-        </h3>
-        {/* header Text ANd Number */}
+      <Box component="main" sx={{ p: 1 }}>
+        <Box className="container">
+          <div style={{ padding: "16px", textAlign: "right", height: "auto" }}>
+            {/* header Text ANd Number */}
+            <h2>
+              <div className="HeaderBanner">
+                <span ref={textRefHeaderBanner}>{HeaderBanner}</span>
+                <span className="color-blue">
+                  <AnimatedCounter
+                    targetNumber={50507}
+                    ref={numberRefCounterResume}
+                  />
+                </span>
+              </div>
+              <div className="HeaderBanner">
+                <span ref={textRefHeaderBannerCity}>{HeaderBannerCity}</span>
+                <span className="color-blue padd-text">
+                  <AnimatedCounter
+                    targetNumber={505}
+                    ref={numberRefCounterCity}
+                  />
+                </span>
+              </div>
+            </h2>
+            {/* ImageTAG Goes Here */}
+            <h3 className="margin-top-60 textholder" ref={textRefJobSeeking}>
+              {JobSeekingType}
+            </h3>
+            {/* header Text ANd Number */}
 
-        {/* MainDropDown */}
-        <section className="row">
-          <div
-            className={`${
-              isDesktop == true
-                ? "d-flex flex-row-reverse"
-                : "d-flex flex-column-reverse"
-            }  `}
-          >
-            <div
-              className={`${
-                isDesktop
-                  ? "col-4 col-lg-4 col-md-4 col-sm-4  "
-                  : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
-              }`}
-            >
-              <Form.Control
-                tabIndex={1}
-                dir="rtl"
-                type="search"
-                placeholder="عنوان شغلی یا شرکت..."
-                className={`margin-top-60 ${isDesktop ? "mt-4" : ""}`}
-              />
-            </div>
-            <div
-              className={`${
-                isDesktop
-                  ? "col-4 col-lg-4 col-md-4 col-sm-4 p-4 "
-                  : "col-12 col-lg-12 col-md-12 col-sm-12  margin-2"
-              }`}
-            >
-              <Select
-                tabIndex={2}
-                className={`${
-                  isDesktop ? "p-4" : ""
-                }basic-single margin-top-60 `}
-                classNamePrefix="select"
-                //defaultValue={JobCategoryOptions[0]}
-                isDisabled={isDisabled}
-                isLoading={isLoading}
-                isClearable={isClearable}
-                isRtl={isRtl}
-                isSearchable={isSearchable}
-                name="JobCategory"
-                options={JobCategoryOptions}
-                placeholder={"گروه شغلی"}
-              />
-            </div>
-            <div
-              className={`${
-                isDesktop
-                  ? "col-4 col-lg-4 col-md-4 col-sm-4 p-4 "
-                  : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
-              }`}
-            >
-              <Select
-                tabIndex={3}
-                className={`${
-                  isDesktop ? "p-4" : ""
-                }basic-single margin-top-60 `}
-                classNamePrefix="select"
-                //defaultValue={CityOptions[0]}
-                isDisabled={isDisabled}
-                isLoading={isLoading}
-                isClearable={isClearable}
-                isRtl={isRtl}
-                isSearchable={isSearchable}
-                name="City"
-                onChange={(e) => handleProvinceChange(e)}
-                options={CityOptions}
-                getOptionLabel={(option) => option.label}
-                getOptionValue={(option) => option.value}
-                placeholder={"استان"}
-              />
-            </div>
-          </div>
-          <div className="col-md-12 d-flex justify-content-center">
-            {isShowProvince && (
+            {/* MainDropDown */}
+            <Box className="row">
               <div
                 className={`${
-                  isDesktop
-                    ? "col-4 col-lg-4 col-md-4 col-sm-4 p-4 "
-                    : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
-                }`}
+                  isDesktop == true
+                    ? "d-flex flex-row-reverse"
+                    : "d-flex flex-column-reverse"
+                }  `}
               >
-                <Select
-                  tabIndex={4}
+                {!isDesktop && (
+                  <div
+                    className={`${
+                      isDesktop
+                        ? "col-4 col-lg-4 col-md-4 col-sm-4  "
+                        : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
+                    }`}
+                  >
+                    <Form.Control
+                      tabIndex={1}
+                      dir="rtl"
+                      type="search"
+                      placeholder="عنوان شغلی یا شرکت..."
+                      className={`margin-top-60 ${isDesktop ? "mt-4" : ""}`}
+                    />
+                  </div>
+                )}
+                {isDesktop && (
+                  <div className={`${"col-4 col-lg-4 col-md-4 col-sm-4 p-4 "}`}>
+                    <Select
+                      tabIndex={2}
+                      className={`${
+                        isDesktop ? "p-4" : ""
+                      }basic-single margin-top-60 `}
+                      classNamePrefix="select"
+                      //defaultValue={JobCategoryOptions[0]}
+                      isDisabled={isDisabled}
+                      isLoading={isLoading}
+                      isClearable={isClearable}
+                      isRtl={isRtl}
+                      isSearchable={isSearchable}
+                      name="JobCategory"
+                      options={JobCategoryOptions}
+                      placeholder={"گروه شغلی"}
+                    />
+                  </div>
+                )}
+
+                <div
                   className={`${
-                    isDesktop ? "p-4" : ""
-                  }basic-single margin-top-60 `}
-                  classNamePrefix="select"
-                  //defaultValue={CityOptions[0]}
-                  isDisabled={isDisabled}
-                  isLoading={isLoading}
-                  isClearable={isClearable}
-                  isRtl={isRtl}
-                  isSearchable={isSearchable}
-                  name="Province"
-                  value={selectedProvince}
-                  onChange={handleCityChange}
-                  options={cityOptions}
-                  getOptionLabel={(option) => option.label}
-                  getOptionValue={(option) => option.value}
-                  placeholder={"شهر"}
-                />
+                    isDesktop
+                      ? "col-4 col-lg-4 col-md-4 col-sm-4 p-4 "
+                      : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
+                  }`}
+                >
+                  <Select
+                    tabIndex={4}
+                    className={`${
+                      isDesktop ? "p-4" : ""
+                    }basic-single margin-top-60 `}
+                    classNamePrefix="select"
+                    //defaultValue={CityOptions[0]}
+                    isDisabled={isDisabled}
+                    isLoading={isLoading}
+                    isClearable={isClearable}
+                    isRtl={isRtl}
+                    isSearchable={isSearchable}
+                    name="Province"
+                    value={selectedProvince}
+                    onChange={handleCityChange}
+                    options={cityOptions}
+                    getOptionLabel={(option) => option.label}
+                    getOptionValue={(option) => option.value}
+                    placeholder={"شهر"}
+                  />
+                </div>
+                <div
+                  className={`${
+                    isDesktop
+                      ? "col-4 col-lg-4 col-md-4 col-sm-4 p-4 "
+                      : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
+                  }`}
+                >
+                  <Select
+                    tabIndex={3}
+                    className={`${
+                      isDesktop ? "p-4" : ""
+                    }basic-single margin-top-60 `}
+                    classNamePrefix="select"
+                    //defaultValue={CityOptions[0]}
+                    isDisabled={isDisabled}
+                    isLoading={isLoading}
+                    isClearable={isClearable}
+                    isRtl={isRtl}
+                    isSearchable={isSearchable}
+                    name="City"
+                    onChange={(e) => handleProvinceChange(e)}
+                    options={CityOptions}
+                    getOptionLabel={(option) => option.label}
+                    getOptionValue={(option) => option.value}
+                    placeholder={"استان"}
+                  />
+                </div>
               </div>
-            )}
+            </Box>
+            <Carousel />
+            <Box>
+              <Typography>te</Typography>
+              <Typography>test</Typography>
+              <Typography>test</Typography>
+              <Typography>test</Typography>
+            </Box>
           </div>
-        </section>
-        <Carousel />
-      </div>
+        </Box>
+      </Box>{" "}
+      <Toolbar />
     </>
   );
 }
