@@ -39,10 +39,12 @@ function App() {
   const [isRtl, setIsRtl] = useState(true);
   const [isSetColor, setIsColor] = useState();
   const [isShowProvince, setIsShowProvince] = useState(false);
+  const [province, setProvince] = useState();
   const [dimensions, setDimensions] = React.useState({
     height: window.innerHeight,
     width: window.innerWidth,
   });
+
   ////////////////////////states
   //options
   const CityOptions = [
@@ -113,7 +115,7 @@ function App() {
     numberRefCounterResume,
     numberRefCounterCity
   ) {
-    const color = colors[Math.floor(Math.random() * colors.length)];
+    const color = getRandomColor(1);
     if (textRefJobSeeking.current) {
       textRefJobSeeking.current.style.color = color;
       textRefJobSeeking.current.style.transition = "3s";
@@ -126,8 +128,7 @@ function App() {
       textRefHeaderBanner.current.style.color = color;
       textRefHeaderBanner.current.style.transition = "3s";
     }
-    const colorstext =
-      colorsText[Math.floor(Math.random() * colorsText.length)];
+    const colorstext = getRandomColor(2);
     if (numberRefCounterResume.current) {
       numberRefCounterResume.current.style.color = colorstext;
       numberRefCounterResume.current.style.transition = "3s";
@@ -150,12 +151,19 @@ function App() {
     };
   }
 
-  function getRandomColor() {
-    return colors[Math.floor(Math.random() * colors.length)];
+  function getRandomColor(id) {
+    if (id == 1) {
+      return colors[Math.floor(Math.random() * colors.length)];
+    } else if (id == 2)
+      return colorsText[Math.floor(Math.random() * colorsText.length)];
   }
 
-  const handleProvinceChange = (e) => {
-    console.log(e, "handleProvince");
+  const handleProvinceChange = (data) => {
+    console.log(data, "handleProvince");
+    if (data.value) {
+      setProvince(data);
+      setIsShowProvince(true);
+    }
   };
   //end region Func
 
@@ -254,7 +262,9 @@ function App() {
                 placeholder={"شهر"}
               />
             </div>
-            {isShowProvince ? (
+          </div>
+          <div className="col-md-12 d-flex justify-content-center">
+            {isShowProvince == true ? (
               <div
                 className={`${
                   isDesktop
