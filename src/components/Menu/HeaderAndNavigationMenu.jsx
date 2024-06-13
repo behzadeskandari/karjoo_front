@@ -161,7 +161,7 @@ export default function HeaderAndNavigationMenu() {
       </nav> 
       */}
       <AppBar position="static" component="main">
-        <Toolbar dir="rtl">
+        <Toolbar dir="rtl" sx={{ backgroundColor: "green" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"

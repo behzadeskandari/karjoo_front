@@ -56,9 +56,9 @@ export default function Carousel() {
   ];
 
   return (
-    // style={{ marginTop: "9em" }}
+    //
     <div className="row">
-      <div className="d-flex justify-content-center ">
+      <div className="d-flex justify-content-center py-5">
         <ReactCardSlider slides={slides} />
       </div>
     </div>
