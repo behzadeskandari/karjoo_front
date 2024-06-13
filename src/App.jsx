@@ -26,6 +26,7 @@ import {
 import AnimatedCounter from "./Constant/MainPage/Counter/AnimatedCounter";
 import { getRandomColor } from "./components/RandomColor/index";
 import AdvertismentCard from "./components/Card/Card";
+import logo from "./assets/images/1.jpg";
 function App() {
   // region refs
   const textRefJobSeekingRef = React.useRef();
@@ -188,6 +189,32 @@ function App() {
     //setCityOptions([]);
     //setIsShowProvince(false);
   };
+
+  const clickEvent = () => {
+    alert("Button clicked!");
+  };
+
+  const items = [
+    {
+      image: logo,
+      title: "This is a first title",
+      description: <span>شركت خدمات انفورماتیك</span>,
+      clickEvent: clickEvent,
+    },
+    {
+      image: logo,
+      title: "This is a second title",
+      description: <span>This is a second description</span>,
+      clickEvent: clickEvent,
+    },
+    {
+      image: logo,
+      title: "This is a third title",
+      description: <span>This is a third description</span>,
+      clickEvent: clickEvent,
+    },
+  ];
+
   //end region Func
   //region return
   return (
@@ -591,7 +618,7 @@ function App() {
             <Box className="row Extra_add mt-4 mb-4">
               <Button className="btnExtraAdd">مشاهده آگهی بیشتر</Button>
             </Box>
-            <Carousel />
+            <Carousel items={items} />
 
             <div className="row py-5">
               <div className="col-3 col-md-3">
