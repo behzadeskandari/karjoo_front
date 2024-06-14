@@ -72,7 +72,7 @@ const Carousel = ({ items }) => {
                   style={{ maxWidth: "100%", height: "auto" }}
                 />
               </div>
-              <h6 className="mt-4 mb-2">{item.title}</h6>
+              <h6 className="mt-4 mb-2 text-right">{item.title}</h6>
               <p>{item.description}</p>
               {item.clickEvent && (
                 <button onClick={item.clickEvent}>توضیحات بیشتر</button>
@@ -85,7 +85,7 @@ const Carousel = ({ items }) => {
         sx={{
           position: "absolute",
           top: "50%",
-          left: "0",
+          left: "-5%",
           transform: "translateY(-50%)",
         }}
         onClick={handlePrev}
@@ -96,7 +96,7 @@ const Carousel = ({ items }) => {
         sx={{
           position: "absolute",
           top: "50%",
-          right: "0",
+          right: "-5%",
           transform: "translateY(-50%)",
         }}
         onClick={handleNext}

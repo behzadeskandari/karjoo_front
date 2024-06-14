@@ -1,6 +1,7 @@
 @import url("./styles/foniran");
 
-#root {
+#root,
+.iransans {
   font-family: IRANSans;
 }
 
@@ -277,4 +278,119 @@ h1 {
   object-fit: contain;
   border-radius: 7px;
   width: 5em;
+}
+.CardRating {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: end;
+}
+
+.mr-2 {
+  margin-right: 7px;
+}
+.text-right {
+  text-align: right;
+}
+.footerIntroduction {
+  display: flex;
+  flex-flow: row;
+  justify-content: end;
+  align-items: start;
+  gap: 2em;
+  margin-top: 23px;
+  margin-left: -17px;
+  text-align: right;
+  word-wrap: normal;
+  word-break: break-word;
+  word-spacing: -3px;
+  line-height: 2.4;
+}
+.menu {
+  align-content: flex-end;
+  align-items: end;
+  align-self: start;
+  display: block;
+  text-align: right;
+  margin-left: 0;
+}
+.text-right {
+  text-align: right;
+  margin-right: 2em;
+}
+.NamadsHolder {
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+}
+.background-white {
+  background-color: #b5b5b5;
+  width: 10em;
+  text-align: center;
+  height: 12em;
+  padding-top: 2.2em;
+  border-radius: 9px;
+}
+.margin-em-seven {
+  margin-top: 0.7em;
+}
+.custom-row {
+  align-items: center;
+  justify-content: end;
+  padding: 0.9em;
+}
+.flex-cs-box {
+  display: flex;
+  justify-content: end;
+  gap: 1.7em;
+  margin-top: 1.7em;
+}
+.questionSection {
+  background: #5c6067;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+
+  text-align: right;
+  padding: 12px;
+  color: white;
+  direction: rtl;
+  cursor: pointer;
+}
+.border-round {
+  border: 2px solid #fff;
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  text-align: center;
+  border-radius: 17px;
+  color: #fff;
+  margin-top: 5px;
+  margin-left: 0.5em;
+}
+.questionSectionAnswer {
+  background: #5c6067;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+
+  text-align: right;
+  padding: 12px;
+  color: white;
+  direction: rtl;
+}
+
+.borderbottom {
+  border-bottom: 1px solid;
+}
+.pad-none {
+  padding: 0;
+}
+.width-80 {
+  width: 80vw;
+}
+
+.width-90 {
+  width: 90vw;
 }
