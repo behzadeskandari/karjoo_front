@@ -3,7 +3,9 @@ import {
   Box,
   Button,
   Chip,
+  ThemeProvider,
   CssBaseline,
+  Container,
   Divider,
   Grid,
   Toolbar,
@@ -14,20 +16,36 @@ import {
 // import CalculateIcon from "@mui/icons-material/Calculate";
 // import Calculator from "./assets/Icons/Calculator";
 // AppBar,Toolbar,IconButton,Typography,Drawer,List,ListItem,ListItemText,Hidden,
-
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./themes/theme";
+import theme from "./store/store";
+import HomePage from "./Pages/MainPage/index";
+import LoginPage from "./Pages/LoginPage/LoginPage";
+import SignUpPage from "./Pages/SignUpPage/SignUpPage";
+import AboutPage from "./Pages/AboutPage/AboutPage";
+import ContactUsPage from "./Pages/ContactUsPage/ContactUsPage";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { Container, Form } from "react-bootstrap";
 import HeaderAndNavigationMenu from "./components/Menu/HeaderAndNavigationMenu";
-import HomePAGE from "./Constant/MainPage/index";
 
 function App() {
   //region return
   return (
     <>
-      <CssBaseline enableColorSchem={false} />
-      <HeaderAndNavigationMenu />
-      <HomePAGE />
+      {/* <CssBaseline enableColorSchem={false} />*/}
+
+      <Router>
+        <HeaderAndNavigationMenu />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactUsPage />} />
+        </Routes>
+      </Router>
     </>
   );
 }

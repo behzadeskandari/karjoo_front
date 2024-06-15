@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { getRandomColor } from "../../components/RandomColor/index";
 
 import Select from "react-select";
 import Carousel from "../../components/Carousel/Carousel";
-import { JobCategoryOptions } from "../../Constant/MainPage/DropDown/JobCategory";
+import { JobCategoryOptions } from "../../Pages/MainPage/DropDown/JobCategory";
 import {
   CityOptions,
   ProvinceOptions,
-} from "../../Constant/MainPage/DropDown/CityCategory";
-import { TechnicalOptions } from "../../Constant/MainPage/DropDown/TechnicalCategory";
+} from "../../Pages/MainPage/DropDown/CityCategory";
+import { TechnicalOptions } from "../../Pages/MainPage/DropDown/TechnicalCategory";
 import {
   HeaderBanner,
   HeaderBannerCity,
   JobSeekingType,
-} from "../../Constant/MainPage/Text/index";
-import AnimatedCounter from "../../Constant/MainPage/Counter/AnimatedCounter";
+} from "../../Pages/MainPage/Text/index";
+import AnimatedCounter from "../../Pages/MainPage/Counter/AnimatedCounter";
 import AdvertismentCard from "../../components/Card/Card";
 import logo from "../../assets/images/1.jpg";
 import { Box, Button } from "@mui/material";
 import Footer from "./Footer/Footer";
+import Loader from "../../components/Loader/Loader";
 // import Footer from "./Constant/MainPage/Footer/Footer";
 export default function HomePAGE() {
   // region refs
@@ -47,6 +48,7 @@ export default function HomePAGE() {
     height: window.innerHeight,
     width: window.innerWidth,
   });
+  const [isWidthDetected, setIsWidthDetected] = useState(false);
   const [selectedCity, setSelectedCity] = useState(null);
   const [selectedProvince, setSelectedProvince] = useState(null);
   const [cityOptions, setCityOptions] = useState([]);
@@ -55,6 +57,43 @@ export default function HomePAGE() {
 
   //options
   //region Effects
+  useLayoutEffect(() => {
+    // const handleResize = () => {
+    //   setBrowserWidth(window.innerWidth);
+    // };
+
+    // // Set initial width
+    // handleResize();
+    // setIsWidthDetected(true);
+
+    // // Add event listener to update width on resize
+    // window.addEventListener('resize', handleResize);
+
+    // // Clean up the event listener on component unmount
+    // return () => {
+    //   window.removeEventListener('resize', handleResize);
+    // };
+    const debouncedHandleResize = debounce(function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }, 50);
+    setIsWidthDetected(true);
+    if (dimensions.width < 992) {
+      setIsDesktop(false);
+      setIsClearable(true);
+    } else {
+      setIsDesktop(true);
+      //setIsClearable(false);
+    }
+    window.addEventListener("resize", debouncedHandleResize);
+
+    return (_) => {
+      window.removeEventListener("resize", debouncedHandleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const debouncedHandleResize = debounce(function handleResize() {
       setDimensions({
@@ -309,7 +348,9 @@ export default function HomePAGE() {
       clickEvent: clickEvent,
     },
   ];
-
+  if (!isWidthDetected) {
+    return <Loader />;
+  }
   //end region Func
   return (
     <>
