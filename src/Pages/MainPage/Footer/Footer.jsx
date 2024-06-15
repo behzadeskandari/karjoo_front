@@ -1,8 +1,10 @@
 import { Box, Chip, Divider, Typography } from "@mui/material";
 import React from "react";
 import QuestionAnswer from "./QuestionAnswer";
-
+import { useNavigate } from "react-router-dom";
 export default function Footer({ isDesktop, logo }) {
+  const navigate = useNavigate();
+
   const questionsAnswers = [
     {
       question:
@@ -19,7 +21,10 @@ export default function Footer({ isDesktop, logo }) {
       answer: "جواب سوم",
     },
   ];
-
+  const handleNavigateToContactUs = () => {
+    console.log("navigate");
+    navigate("/contact");
+  };
   return (
     <Box
       className="pad-none"
@@ -85,12 +90,15 @@ export default function Footer({ isDesktop, logo }) {
         >
           <h5 className="text-center iransans text-white">درباره جاب ویژن</h5>
           <span className="text-right text-white iransans menu mt-2 mb-2">
-            درباره ما
+            <span>درباره ما</span>
           </span>
           <span className="text-right text-white iransans menu mt-3 mb-3">
             سوالات متداول
           </span>
-          <span className="text-right text-white iransans menu mt-3 mb-3">
+          <span
+            onClick={handleNavigateToContactUs}
+            className="text-right text-white iransans menu mt-3 mb-3"
+          >
             تماس با ما
           </span>
           <span className="text-right text-white iransans menu mt-3 mb-3">

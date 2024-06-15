@@ -19,6 +19,8 @@
     margin-top: 1em;
     margin-bottom: 1em;
 }
+  
+
 .InputUser{
     width: 100%;
     text-align: right;
@@ -29,6 +31,66 @@
     text-align: center;
     margin-top: 1em;
 }
+.btnHolder button {
+    padding: 10px 20px;
+    border: none;
+    color: rgb(44, 93, 160, 1) !important;
+    border-radius: 5px;
+    cursor: pointer;
+    line-height: 2.2em;
+  }
+  
+
+  
 .pad-center{   
      padding-right: 1.4em;
     }
+
+
+    /* Animation for the login steps */
+.step-enter {
+    opacity: 0;
+    /* transform: scale(0.9); */
+    transform: translateX(100%);
+  }
+  .step-enter-active {
+    opacity: 1;
+    /* transform: scale(1); */
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .step-exit {
+    opacity: 1;
+    /*transform: scale(1);
+    */transform: translateX(0);
+}
+  .step-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 300ms, transform 300ms;
+  }
+  
+  /* Basic styling for the login page */
+  .container {
+    padding: 20px;
+  }
+  
+  .HeaderLogin {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  .Login-card {
+  
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-top: 2px solid blue;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+
+
+  
