@@ -29,7 +29,7 @@ const LoginPage = () => {
             </strong>
             <span className="color-grey">جوینده کار</span>
           </h4>
-          <div class="form-group my-4">
+          <div class="form-group my-4 pad-center">
             <label for="InputUser" className="InputUser color-grey mt-4">
               شماره موبایل یا ایمل خود را وارد کنید
             </label>
