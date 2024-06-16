@@ -20,8 +20,12 @@ import logo from "../../assets/images/1.jpg";
 import { Box, Button } from "@mui/material";
 import Footer from "./Footer/Footer";
 import Loader from "../../components/Loader/Loader";
+import QuestionAnswerWhyUs from "./Footer/QuestionAnswerWhyUs";
+import { useThemeToggle } from "../../wrapper/ThemeProviderWrapper";
 // import Footer from "./Constant/MainPage/Footer/Footer";
 export default function HomePAGE() {
+  const toggleTheme = useThemeToggle();
+
   // region refs
   const textRefJobSeekingRef = React.useRef();
   const textRefHeaderBannerCityRef = React.useRef();
@@ -225,7 +229,7 @@ export default function HomePAGE() {
   const clickEvent = () => {
     alert("Button clicked!");
   };
-
+  //region Array
   const items = [
     {
       image: logo,
@@ -348,22 +352,40 @@ export default function HomePAGE() {
       clickEvent: clickEvent,
     },
   ];
+
+  const questionsAnswers = [
+    {
+      question:
+        "كارجو چه مزیتی نسبت به دیگران سایت های كاریابی و استخدامی دارد؟",
+      answer:
+        "وب اپلیكیشن كارجو با تعداد متعدد آگهی تبلیغاتی در معرفی كارجو به كارفرما كارایی آسانی دارد",
+    },
+    {
+      question: "سوال دوم",
+      answer: "جواب دوم",
+    },
+    {
+      question: "سوال سوم",
+      answer: "جواب سوم",
+    },
+  ];
+  //region return
   if (!isWidthDetected) {
     return <Loader />;
   }
-  //end region Func
+  //region return
   return (
     <>
       <Box
+        bgcolor={"secondary.main"}
         component="main"
         sx={{
           p: 1,
-          backgroundColor: "#fcfcfc",
           paddingBottom: "1.2em",
           padding: "0px",
         }}
       >
-        <Box className="container">
+        <Box className="container" component={"div"}>
           <div
             style={{ paddingTop: "16px", textAlign: "right", height: "auto" }}
           >
@@ -749,7 +771,12 @@ export default function HomePAGE() {
                 <button className="custom__ButtonCard">جستجو آگهی</button>
               </div>
             </Box>
-            <Box className="row boxShadow  grid-container  py-4 m-t-5">
+
+            {/* ADVERTISMENT CARDS */}
+            <Box
+              bgcolor={"secondary.main"}
+              className="row boxShadow  grid-container  py-4 m-t-5"
+            >
               <AdvertismentCard />
               <AdvertismentCard />
               <AdvertismentCard />
@@ -763,6 +790,17 @@ export default function HomePAGE() {
               <Button className="btnExtraAdd">مشاهده آگهی بیشتر</Button>
             </Box>
             <Carousel items={items} />
+            <Box className="row">
+              {questionsAnswers.map((qa, index) => (
+                <QuestionAnswerWhyUs
+                  isDesktop={isDesktop}
+                  key={index}
+                  index={index + 1}
+                  question={qa.question}
+                  answer={qa.answer}
+                />
+              ))}
+            </Box>
           </div>
         </Box>
       </Box>{" "}

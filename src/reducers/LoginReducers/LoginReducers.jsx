@@ -27,10 +27,7 @@ function LoginReducer(state = initialState, action) {
         ...state,
         ProfileValue: action.payload,
       };
-    case "CheckUserToken":
-      return {
-        ...state,
-      };
+
     case "CheckUserToken":
       return {
         ...state,

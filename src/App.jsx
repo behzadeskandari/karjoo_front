@@ -1,25 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Chip,
-  ThemeProvider,
-  CssBaseline,
-  Container,
-  Divider,
-  Grid,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+
 // import MenuIcon from "@mui/icons-material/Menu";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import CalculateIcon from "@mui/icons-material/Calculate";
 // import Calculator from "./assets/Icons/Calculator";
 // AppBar,Toolbar,IconButton,Typography,Drawer,List,ListItem,ListItemText,Hidden,
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./themes/theme";
-import theme from "./store/store";
 import HomePage from "./Pages/MainPage/index";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import SignUpPage from "./Pages/SignUpPage/SignUpPage";

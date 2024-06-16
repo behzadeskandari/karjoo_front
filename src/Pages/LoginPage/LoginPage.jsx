@@ -1,11 +1,12 @@
 // LoginPage.js
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import login from "../../actions/LoginAction/LoginAction";
 import "./LoginPage.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Loader from "../../components/Loader/Loader";
+import { debounce } from "../../utility/index";
 const LoginPage = () => {
   //region Dispatch
   const dispatch = useDispatch();
@@ -15,6 +16,53 @@ const LoginPage = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [dimensions, setDimensions] = React.useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+  //region Effects
+  useLayoutEffect(() => {
+    const debouncedHandleResize = debounce(function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }, 50);
+    if (dimensions.width < 992) {
+      setIsDesktop(false);
+    } else {
+      setIsDesktop(true);
+      //setIsClearable(false);
+    }
+    window.addEventListener("resize", debouncedHandleResize);
+
+    return (_) => {
+      window.removeEventListener("resize", debouncedHandleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const debouncedHandleResize = debounce(function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }, 50);
+    if (dimensions.width < 992) {
+      setIsDesktop(false);
+    } else {
+      setIsDesktop(true);
+      //setIsClearable(false);
+    }
+    window.addEventListener("resize", debouncedHandleResize);
+
+    return (_) => {
+      window.removeEventListener("resize", debouncedHandleResize);
+    };
+  }, [dimensions]);
+
   //region Functions
   const handleLogin = () => {
     dispatch(login({ username: "user" }));
@@ -46,7 +94,7 @@ const LoginPage = () => {
 
   //region return
   return (
-    <div className="container">
+    <div className="container height-90vh align-content-center">
       {/* {loading ? (
         <Loader />
       ) : ( */}
@@ -54,6 +102,7 @@ const LoginPage = () => {
         <CSSTransition key={step} timeout={300} classNames="step">
           {step === 1 ? (
             <LoginSectionStepOne
+              isDesktop={isDesktop}
               phoneNumber={phoneNumber}
               onPhoneNumberChange={handlePhoneNumberChange}
               onNextStep={handleNextStep}
@@ -62,6 +111,7 @@ const LoginPage = () => {
             <>
               <ArrowBackIcon onClick={handlePrevStep} />
               <LoginSectionStepTwo
+                isDesktop={isDesktop}
                 phoneNumber={phoneNumber}
                 password={password}
                 onPasswordChange={handlePasswordChange}
@@ -77,22 +127,29 @@ const LoginPage = () => {
 };
 //region StepOne
 const LoginSectionStepOne = ({
+  isDesktop,
   phoneNumber,
   onPhoneNumberChange,
   onNextStep,
 }) => {
   return (
-    <div className="row">
-      <div className="HeaderLogin">
+    <div className="row step">
+      <div
+        className={`${isDesktop ? "HeaderLogin  w-50 marg-7" : "HeaderLogin"}`}
+      >
         <span className="color-grey mx-2">کارفرما هستید؟</span>
         <span className="color-blue mx-2">ورود به بخش کارفرمایی</span>
       </div>
-      <div className="Login-card col-10 col-md-10">
+
+      <div
+        className={`Login-card ${
+          isDesktop ? "col-5 col-md-5" : "col-10 col-md-10"
+        }`}
+      >
         <h3 className="WebSiteName">کارجو</h3>
         <h4 className="text-center">
           <strong>
             <span className="m-1">ورود| </span>
-            <span className="m-1">ثبت نام|</span>
           </strong>
           <span className="color-grey">جوینده کار</span>
         </h4>
@@ -119,14 +176,23 @@ const LoginSectionStepOne = ({
   );
 };
 //region StepTwo
-const LoginSectionStepTwo = ({ phoneNumber, password, onPasswordChange }) => {
+const LoginSectionStepTwo = ({
+  isDesktop,
+  phoneNumber,
+  password,
+  onPasswordChange,
+}) => {
   return (
-    <div className="row">
-      <div className="HeaderLogin">
+    <div className="row step">
+      <div className={`${isDesktop ? "HeaderLogin  w-50" : "HeaderLogin"}`}>
         <span className="color-grey mx-2">کارفرما هستید؟</span>
         <span className="color-blue mx-2">ورود به بخش کارفرمایی</span>
       </div>
-      <div className="Login-card col-10 col-md-10">
+      <div
+        className={`Login-card ${
+          isDesktop ? "col-5 col-md-5" : "col-10 col-md-10"
+        }`}
+      >
         <h3 className="WebSiteName">کارجو</h3>
         <h4 className="text-center">
           <strong>

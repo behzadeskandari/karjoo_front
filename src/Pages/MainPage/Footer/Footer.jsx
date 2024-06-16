@@ -27,11 +27,12 @@ export default function Footer({ isDesktop, logo }) {
   };
   return (
     <Box
-      className="pad-none"
+      bgcolor={"success.main"}
+      // className="pad-none"
       sx={{
         // width: "100%",
         height: "auto",
-        backgroundColor: "#4a4e57",
+        // backgroundColor: "#4a4e57",
         paddingTop: "1rem",
         paddingBottom: "1rem",
       }}
@@ -39,7 +40,7 @@ export default function Footer({ isDesktop, logo }) {
       <div className="container mt-3 mb-3">
         <div className="col-md-12 col-12 d-flex justify-content-end flex-column align-items-end">
           <h5 className="text-white">سوالات متداول</h5>
-          <div>
+          <div className="col-md-12">
             {questionsAnswers.map((qa, index) => (
               <QuestionAnswer
                 isDesktop={isDesktop}
@@ -76,19 +77,19 @@ export default function Footer({ isDesktop, logo }) {
               : "col-12 col-md-12 mt-2 NamadsHolder "
           }`}
         >
-          <span className="background-white">
+          <Box bgcolor={"info.main"} className="background-white">
             <img src={logo} alt="enamad" />
-          </span>
-          <span className="background-white">
+          </Box>
+          <Box bgcolor={"info.main"} className="background-white">
             <img src={logo} alt="samandehi.ir" />
-          </span>
+          </Box>
         </div>
         <div
           className={`${
             isDesktop == true ? "col-3 col-md-3" : "col-12 col-md-12 mt-5"
           }`}
         >
-          <h5 className="text-center iransans text-white">درباره جاب ویژن</h5>
+          <h5 className="text-center iransans text-white">درباره كارجو</h5>
           <span className="text-right text-white iransans menu mt-2 mb-2">
             <span>درباره ما</span>
           </span>
@@ -213,7 +214,7 @@ export default function Footer({ isDesktop, logo }) {
           className={`${
             isDesktop == true
               ? "col-4 col-md-4  d-flex  flex-row custom-row  text-white"
-              : "col-12 col-md-12  d-flex  flex-column justify-content-center  text-white"
+              : "col-12 col-md-12  d-flex  flex-row justify-content-center  text-white"
           }`}
         >
           <span className="text-center">
@@ -223,10 +224,6 @@ export default function Footer({ isDesktop, logo }) {
               width="64px"
               height="64px"
             >
-              <path
-                fill="url(#TGwjmZMm2W~B4yrgup6jda)"
-                d="M58,54c-1.1,0-2-0.9-2-2s0.9-2,2-2h2.5c1.9,0,3.5-1.6,3.5-3.5S62.4,43,60.5,43H50c-1.4,0-2.5-1.1-2.5-2.5	S48.6,38,50,38h8c1.7,0,3-1.3,3-3s-1.3-3-3-3H42v-6h18c2.3,0,4.2-2,4-4.4c-0.2-2.1-2.1-3.6-4.2-3.6H58c-1.1,0-2-0.9-2-2s0.9-2,2-2	h0.4c1.3,0,2.5-0.9,2.6-2.2c0.2-1.5-1-2.8-2.5-2.8h-14C43.7,9,43,8.3,43,7.5S43.7,6,44.5,6h3.9c1.3,0,2.5-0.9,2.6-2.2	C51.1,2.3,50,1,48.5,1H15.6c-1.3,0-2.5,0.9-2.6,2.2C12.9,4.7,14,6,15.5,6H19c1.1,0,2,0.9,2,2s-0.9,2-2,2H6.2c-2.1,0-4,1.5-4.2,3.6	C1.8,16,3.7,18,6,18h2.5c1.9,0,3.5,1.6,3.5,3.5S10.4,25,8.5,25H5.2c-2.1,0-4,1.5-4.2,3.6C0.8,31,2.7,33,5,33h17v11H6	c-1.7,0-3,1.3-3,3s1.3,3,3,3l0,0c1.1,0,2,0.9,2,2s-0.9,2-2,2H4.2c-2.1,0-4,1.5-4.2,3.6C-0.2,60,1.7,62,4,62h53.8	c2.1,0,4-1.5,4.2-3.6C62.2,56,60.3,54,58,54z"
-              />
               <radialGradient
                 id="TGwjmZMm2W~B4yrgup6jdb"
                 cx="18.51"

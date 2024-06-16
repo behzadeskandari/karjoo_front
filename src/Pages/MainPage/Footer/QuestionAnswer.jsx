@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React, { useState } from "react";
 
 const QuestionAnswer = ({ question, answer, index, isDesktop }) => {
@@ -8,30 +9,36 @@ const QuestionAnswer = ({ question, answer, index, isDesktop }) => {
   };
 
   return (
-    <div className="mt-2 mb-2">
-      <section
-        className={`questionSection ${
-          isAnswerVisible
-            ? "borderbottom width-90"
-            : isDesktop
-            ? "width-80"
-            : "width-90"
+    <div
+      className={`${
+        isDesktop ? "col-12 mt-5 mb-2" : "col-12 col-md-12 mt-5 mb-2"
+      }`}
+    >
+      <Box
+        component={"section"}
+        bgcolor={"info.main"}
+        color={"text.secondary"}
+        className={`questionSection col-12 col-md-12 ${
+          isAnswerVisible ? "borderbottom " : isDesktop ? "" : ""
         }`}
         onClick={toggleAnswerVisibility}
       >
         <span className="border-round">{index}</span>
         <span>{question}</span>
-      </section>
+      </Box>
       {isAnswerVisible && (
-        <section
+        <Box
+          bgcolor={"info.main"}
+          color={"text.secondary"}
+          component={"section"}
           className={`${
             isDesktop == true
-              ? "questionSectionAnswer width-80"
-              : "questionSectionAnswer width-90"
+              ? "questionSectionAnswer visible"
+              : "questionSectionAnswer visible"
           }`}
         >
           {answer}
-        </section>
+        </Box>
       )}
     </div>
   );
