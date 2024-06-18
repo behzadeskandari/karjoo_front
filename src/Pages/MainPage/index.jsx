@@ -586,7 +586,7 @@ export default function HomePAGE() {
                     isClearable={true}
                     isRtl={isRtl}
                     isSearchable={isSearchable}
-                    name="Province"
+                    name="Seniority"
                     options={TechnicalOptions}
                     getOptionLabel={(option) => option.label}
                     getOptionValue={(option) => option.value}
