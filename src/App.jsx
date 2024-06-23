@@ -15,6 +15,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { Container, Form } from "react-bootstrap";
 import HeaderAndNavigationMenu from "./components/Menu/HeaderAndNavigationMenu";
+import NoutFound from "./Pages/NotFound/NoutFound";
 
 function App() {
   //region return
@@ -30,6 +31,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactUsPage />} />
+          <Route path="/*" element={<NoutFound />} />
         </Routes>
       </Router>
     </>
