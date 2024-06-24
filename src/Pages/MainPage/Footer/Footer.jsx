@@ -2,6 +2,7 @@ import { Box, Chip, Divider, Typography } from "@mui/material";
 import React from "react";
 import QuestionAnswer from "./QuestionAnswer";
 import { useNavigate } from "react-router-dom";
+import "./Footer.css";
 export default function Footer({ isDesktop, logo }) {
   const navigate = useNavigate();
 

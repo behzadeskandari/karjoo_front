@@ -327,14 +327,7 @@ h1 {
   word-spacing: -3px;
   line-height: 2.4;
 }
-.menu {
-  align-content: flex-end;
-  align-items: end;
-  align-self: start;
-  display: block;
-  text-align: right;
-  margin-left: 0;
-}
+
 .text-right {
   text-align: right;
   margin-right: 2em;

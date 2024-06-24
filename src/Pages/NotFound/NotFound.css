@@ -84,7 +84,7 @@ a {
 }
 
 /* Menu bar */
-.menu {
+.menuNotFound {
     padding: 0.8rem;
     z-index: 4;
     position: absolute;

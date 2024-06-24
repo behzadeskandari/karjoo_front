@@ -26,7 +26,7 @@ import {
   faPaperclip,
   faCoins,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   ArrowBack,
@@ -88,6 +88,12 @@ export default function HeaderAndNavigationMenu() {
   const handleNavigateToSignUp = () => {
     navigate({
       pathname: "/signup",
+    });
+    handleDrawerToggle();
+  };
+  const handleNavigateMBTITest = () => {
+    navigate({
+      pathname: "/MBTITest",
     });
     handleDrawerToggle();
   };
@@ -306,7 +312,13 @@ export default function HeaderAndNavigationMenu() {
                 }}
                 onClick={handleClose}
               >
-                تست MBTI
+                <Button
+                  sx={{ color: "#fff", fontFamily: "IRANSans" }}
+                  onClick={handleNavigateMBTITest}
+                >
+                  {" "}
+                  تست MBTI
+                </Button>
               </MenuItem>
               <MenuItem
                 sx={{
