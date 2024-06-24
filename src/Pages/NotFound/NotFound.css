@@ -14,8 +14,8 @@ a {
 
 /* card */
 .main {
-    width: var(--main-width);
-    min-width: 580px;
+    /* width: var(--main-width); */
+    /* min-width: 580px; */
     height: var(--main-height);
     border-radius: var(--main-radius);
     background-image: linear-gradient(to top left, rgba(15, 15, 15, 0.5), rgba(0, 0, 0, .7), rgba(10, 10, 10, .5));
