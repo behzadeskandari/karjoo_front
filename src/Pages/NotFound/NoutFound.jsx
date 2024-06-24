@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./NotFound.css";
+import astornat from "../../assets/images/404/astronaut.png";
+import ghost from "../../assets/images/404/cute-ghost.png";
+import female from "../../assets/images/404/female.png";
+import boy from "../../assets/images/404/sad-boy.png";
+import Searcher from "../../assets/images/404/Searcher.png";
 export default function NoutFound() {
   const [menuActive, setMenuActive] = useState(false);
   const [selectedLink, setSelectedLink] = useState(null);
@@ -22,9 +27,7 @@ export default function NoutFound() {
   // const toggleMenu = () => {
   //   setMenuActive((prev) => !prev);
   // };
-  const [bigImageSrc, setBigImageSrc] = useState(
-    "https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/astronaut.png"
-  );
+  const [bigImageSrc, setBigImageSrc] = useState(astornat);
 
   const handleSmallImageClick = (src) => {
     setBigImageSrc(src);
@@ -43,70 +46,39 @@ export default function NoutFound() {
         <div class="image-box">
           <img
             className="small_image active"
-            src="https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/astronaut.png"
+            src={astornat}
             style={{ maxWidth: "50%", animationDelay: "300ms" }}
             alt="Astronaut"
-            onClick={() =>
-              handleSmallImageClick(
-                "https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/astronaut.png"
-              )
-            }
+            onClick={() => handleSmallImageClick(astornat)}
           />
           <img
             className="small_image"
-            src="https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/cute-ghost.png"
+            src={ghost}
             style={{ maxWidth: "80%", animationDelay: "300ms" }}
             alt="Cute Ghost"
-            onClick={() =>
-              handleSmallImageClick(
-                "https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/cute-ghost.png"
-              )
-            }
+            onClick={() => handleSmallImageClick(ghost)}
           />
           <img
             className="small_image"
-            src="https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/female.png"
+            src={female}
             style={{ maxWidth: "50%", animationDelay: "300ms" }}
             alt="Female"
-            onClick={() =>
-              handleSmallImageClick(
-                "https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/female.png"
-              )
-            }
+            onClick={() => handleSmallImageClick(female)}
           />
           <img
             className="small_image"
-            src="https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/sad-boy.png"
+            src={boy}
             style={{ maxWidth: "70%", animationDelay: "300ms" }}
             alt="Sad Boy"
-            onClick={() =>
-              handleSmallImageClick(
-                "https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/sad-boy.png"
-              )
-            }
+            onClick={() => handleSmallImageClick(boy)}
           />
           <img
             className="small_image"
-            src="https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/Searcher.png"
+            src={Searcher}
             style={{ maxWidth: "80%", animationDelay: "300ms" }}
             alt="Searcher"
-            onClick={() =>
-              handleSmallImageClick(
-                "https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/Searcher.png"
-              )
-            }
+            onClick={() => handleSmallImageClick(Searcher)}
           />
-          {/* <img
-            className="small_image"
-            src="https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/cherry.png"
-            style={{ maxWidth: "60%", animationDelay: "300ms" }}
-            alt="Cherry"
-            onClick={() =>
-              handleSmallImageClick(
-                "https://mjavadh.github.io/4X4-Collection/Fantasy/Black%20Box/assets/cherry.png"
-              )
-            }
-          /> */}
         </div>
       </main>
     </>
