@@ -1,17 +1,23 @@
 .step {
-    display: inline-block;
+    /* display: inline-block;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     background-color: #ccc;
     margin: 0 5px;
     text-align: center;
-    line-height: 30px;
+    line-height: 30px; */
+    width: 0%;
+    position: absolute;
+    right: -7vw;
+    top: 2em;
+    
   }
   
   .step.active {
     background-color: #007bff;
     color: #fff;
+    z-index: 76;
   }
   
   #progress {
@@ -28,6 +34,8 @@
     align-items: center;
     margin: 8px;
     padding: 8px;
+    width: 50vw;
+    align-items: center;
   }
   
   .ComponentList {

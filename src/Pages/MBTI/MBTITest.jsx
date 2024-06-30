@@ -7,7 +7,7 @@ import Dexie from "dexie";
 
 const db = new Dexie("MBTITestDB");
 db.version(1).stores({
-  answers: "++id,questionId,value"
+  answers: "++id,questionId,value",
 });
 
 export default function MBTITest() {
@@ -18,16 +18,17 @@ export default function MBTITest() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5029/api/MBTI/questions")
-      .then(response => {
+    axios
+      .get("http://localhost:5029/api/MBTI/questions")
+      .then((response) => {
         setQuestions(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("There was an error fetching the questions!", error);
       });
 
     const interval = setInterval(() => {
-      setTimeLeft(prevTime => {
+      setTimeLeft((prevTime) => {
         if (prevTime <= 1) {
           clearInterval(interval);
           handleSubmit();
@@ -42,9 +43,9 @@ export default function MBTITest() {
 
   useEffect(() => {
     // Load answers from IndexedDB on mount
-    db.answers.toArray().then(savedAnswers => {
+    db.answers.toArray().then((savedAnswers) => {
       const answersObj = {};
-      savedAnswers.forEach(answer => {
+      savedAnswers.forEach((answer) => {
         answersObj[answer.questionId] = answer.value;
       });
       setAnswers(answersObj);
@@ -52,20 +53,21 @@ export default function MBTITest() {
   }, []);
 
   const handleChange = (questionId, value) => {
-    setAnswers(prevAnswers => ({
+    setAnswers((prevAnswers) => ({
       ...prevAnswers,
-      [questionId]: value
+      [questionId]: value,
     }));
     // Save answer to IndexedDB
     db.answers.put({ questionId, value });
   };
 
   const handleSubmit = () => {
-    axios.post("http://localhost:5029/api/MBTI/submit", answers)
-      .then(response => {
+    axios
+      .post("http://localhost:5029/api/MBTI/submit", answers)
+      .then((response) => {
         navigate("/result", { state: { result: response.data } });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("There was an error submitting the answers!", error);
       });
   };
@@ -93,7 +95,7 @@ export default function MBTITest() {
   ));
 
   return (
-    <div>
+    <div className="d-flex justify-content-center">
       <Stepper
         ComponentList={questionComponents}
         ComponentLength={questionComponents.length}
