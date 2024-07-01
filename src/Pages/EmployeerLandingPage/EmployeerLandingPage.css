@@ -35,3 +35,19 @@
 .line-height-3{
     line-height: 3;
 }
+.orange-badge{
+    background-color: orange;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    color: #efefef;
+    width: 50%;
+    margin-right: 0px !important;
+    margin: 0 50%;
+}
+.mr-50{
+    margin-right: 0px !important;
+    margin: 0 50%;
+}

@@ -395,6 +395,41 @@ export default function EmployeerLandingPage() {
       <Box>
         <PriceCard />
       </Box>
+      <Box>
+        <div className="Gift-card">
+          <div className="col-sm-12 col-md-4 col-lg-4">
+            <div className="d-flex flex-column">
+              <span className="text-right orange-badge">هدیه کارجو</span>
+              <span className="text-right mr-50">تخفیف %100 اولین آگهی </span>
+            </div>
+            <span className="dotted-line">
+              <svg width="300px" height="200px" viewBox="0 0 300 200">
+                <line
+                  x1="40"
+                  x2="260"
+                  y1="100"
+                  y2="100"
+                  stroke="#5184AF"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-dasharray="1, 10"
+                />
+              </svg>
+            </span>
+            <div className="d-flex flex-row">
+              <div className="d-flex flex-column">
+                <span>کد تخفیف</span>
+                <span>Welcome</span>
+              </div>
+              <div>
+                <button>ثبت آگهی</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm-12 col-md-4 col-lg-4"></div>
+          <div className="col-sm-12 col-md-4 col-lg-4"></div>
+        </div>
+      </Box>
     </Box>
   );
 }
