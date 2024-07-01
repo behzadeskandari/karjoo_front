@@ -48,7 +48,7 @@ const StepIndicator = ({ steps }) => {
           {[...Array(steps)].map((_, index) => (
             <div
               key={index}
-              className={`step ${currentStep === index ? "active" : ""}`}
+              className={`step-inside ${currentStep === index ? "active" : ""}`}
             >
               <div className="step-number">{index + 1}</div>
               <div className="step-name">Step {index + 1}</div>

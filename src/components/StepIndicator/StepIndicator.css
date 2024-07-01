@@ -44,7 +44,7 @@
     justify-content: space-between;
   }
   
-  .step {
+  .step-inside {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,7 +62,7 @@
     margin-bottom: 0.5em;
   }
   
-  .step.active .step-number {
+  .step-inside.active .step-number {
     background-color: var(--fg);
   }
   

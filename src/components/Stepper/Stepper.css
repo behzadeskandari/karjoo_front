@@ -1,4 +1,4 @@
-.step {
+.stepper {
     /* display: inline-block;
     width: 30px;
     height: 30px;
@@ -14,7 +14,7 @@
     
   }
   
-  .step.active {
+  .stepper.active {
     background-color: #007bff;
     color: #fff;
     z-index: 76;
@@ -72,7 +72,7 @@
     position: relative;
   }
   
-  .step {
+  .stepper {
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -83,14 +83,14 @@
     line-height: 30px;
   }
   
-  .step.active {
+  .stepper.active {
     background-color: #007bff;
     color: #fff;
   }
 
   
   
-  .step {
+  .stepper {
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -101,7 +101,7 @@
     line-height: 30px;
   }
   
-  .step.active {
+  .stepper.active {
     background-color: #007bff; 
     color: #fff;
   }
@@ -153,7 +153,7 @@
     position: relative; 
   }
   
-  .step {
+  .stepper {
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -163,15 +163,15 @@
     text-align: center;
     line-height: 30px;
   }
-  .step:first{
+  .stepper:first{
     position: absolute;
     left: 10px;
   }
-  .step:last-child{
+  .stepper:last-child{
     position: absolute;
     left: 10px;
   }
-  .step.active {
+  .stepper.active {
     background-color: #007bff; 
     color: #fff;
   }

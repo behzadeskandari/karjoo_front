@@ -13,7 +13,7 @@
   /* display: flex; */
   /* flex-flow: column; */
   /* justify-content: space-between; */
-  width: 100vw;
+  /* width: 100vw; */
   /* margin-top: 0; */
   /* position: fixed; */
   /* top: 0px; */
@@ -190,6 +190,7 @@ h1 {
   padding: 8px 16px;
   cursor: pointer;
   width: 100%;
+  direction: rtl;
 }
 .custom__ButtonCard:hover {
 }

@@ -75,7 +75,7 @@ const Carousel = ({ items }) => {
               <h6 className="mt-4 mb-2 text-right">{item.title}</h6>
               <p>{item.description}</p>
               {item.clickEvent && (
-                <button onClick={item.clickEvent}>توضیحات بیشتر</button>
+                <button className="custom__ButtonCard" onClick={item.clickEvent}>توضیحات بیشتر</button>
               )}
             </Box>
           </Box>

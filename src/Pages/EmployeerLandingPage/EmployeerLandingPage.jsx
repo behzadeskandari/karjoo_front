@@ -13,6 +13,11 @@ import { debounce } from "../../utility";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import PriceCard from "../../components/PriceCard";
 import StepIndicator from "../../components/StepIndicator";
+import { ArrowBack } from "@mui/icons-material";
+import AddHomeIcon from '@mui/icons-material/AddHome';
+import CoPresentIcon from '@mui/icons-material/CoPresent';
+import VerifiedIcon from '@mui/icons-material/Verified';
+
 export default function EmployeerLandingPage() {
   const [isDesktop, setIsDesktop] = useState(false);
   const [dimensions, setDimensions] = React.useState({
@@ -213,7 +218,7 @@ export default function EmployeerLandingPage() {
           </span>
         </div>
       </div>
-      <Divider variant="middle" component="div" />
+      <Divider variant="middle" component="section" />
       <div className="row">
         <div className="col-12 col-md-12">
           <h4 className="text-center mt-4 text-secondary">
@@ -343,12 +348,12 @@ export default function EmployeerLandingPage() {
           </div>
         </div>
       </div>
-      <Box className="d-flex flex-row customBox-prices">
-        <span className="pt-5">
+      <Box className="d-flex flex-row justify-content-center customBox-prices">
+        <span className="col-3 pt-5">
           <h6>تعرفه خدمات جاب ویژن</h6>
-          <div className="card cs-card ">
+          <div className=" cs-card ">
             <div>
-              <span>ICon</span>
+              <span className="line-4"> <ArrowBack/></span>
             </div>
             <div className=" d-flex flex-column">
               <span>ثبت آگهی</span>
@@ -357,38 +362,38 @@ export default function EmployeerLandingPage() {
 
             <div className="line-height-3">
               <span>
-                <BorderColorIcon />
+               <VerifiedIcon/>
               </span>
             </div>
           </div>
         </span>
-        <span className="pt-5">
+        <span className="col-3 pt-5">
           <h6>خرید رزومه از بانک رزومه</h6>
-          <div className="card cs-card">
+          <div className=" cs-card">
             <div>
-              <span>ICon</span>
+              <span className="line-4"><ArrowBack/></span>
             </div>
             <div className="d-flex flex-column">
               <span>ثبت آگهی</span>
               <span>شروع قیمت از 950000 تومان</span>
             </div>
             <div className="line-height-3">
-              <span>ICon</span>
+              <span><CoPresentIcon/></span>
             </div>
           </div>
         </span>
-        <span className="pt-5">
+        <span className="col-3 pt-5">
           <h6>تعرفه خدمات جاب ویژن</h6>
-          <div className="card cs-card">
+          <div className=" cs-card">
             <div>
-              <span>ICon</span>
+              <span className="line-4"><ArrowBack/></span>
             </div>
             <div className=" d-flex flex-column">
               <span>ثبت آگهی</span>
               <span>شروع قیمت از 950000 تومان</span>
             </div>
             <div className="line-height-3">
-              <span>ICon</span>
+              <span><AddHomeIcon/></span>
             </div>
           </div>
         </span>
@@ -423,7 +428,7 @@ export default function EmployeerLandingPage() {
                 <span>Welcome</span>
               </div>
               <div>
-                <button>ثبت آگهی</button>
+                <button className="custom__ButtonCard">ثبت آگهی</button>
               </div>
             </div>
           </div>
@@ -432,7 +437,6 @@ export default function EmployeerLandingPage() {
         </div>
       </Box>
       <Box>
-        <StepIndicator steps={5} />
       </Box>
     </Box>
   );

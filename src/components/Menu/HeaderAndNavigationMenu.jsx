@@ -77,31 +77,41 @@ export default function HeaderAndNavigationMenu() {
     navigate({
       pathname: "/",
     });
-    handleDrawerToggle();
+    if(mobileOpen){
+      handleDrawerToggle();
+    }
   };
   const handleNavigateToLogin = () => {
     navigate({
       pathname: "/login",
     });
-    handleDrawerToggle();
+    if(mobileOpen){
+      handleDrawerToggle();
+    }
   };
   const handleNavigateToSignUp = () => {
     navigate({
       pathname: "/signup",
     });
-    handleDrawerToggle();
+    if(mobileOpen){
+      handleDrawerToggle();
+    }
   };
   const handleNavigateMBTITest = () => {
     navigate({
       pathname: "/MBTITest",
     });
-    handleDrawerToggle();
+    if(mobileOpen){
+      handleDrawerToggle();
+    }
   };
   const handleNavigateToLoginToEmployeer = () => {
     navigate({
       pathname: "/employer",
     });
-    handleDrawerToggle();
+    if(mobileOpen){
+      handleDrawerToggle();
+    }
   };
 
   const container =
@@ -412,7 +422,7 @@ export default function HeaderAndNavigationMenu() {
               onClick={handleNavigateToLoginToEmployeer}
               sx={{ fontFamily: "IRANSans" }}
               title="بخش کارفرمایان / ثبت آگهی"
-            ></Button>
+            >بخش کارفرمایان / ثبت آگهی</Button>
           </Box>
         </Toolbar>
       </AppBar>

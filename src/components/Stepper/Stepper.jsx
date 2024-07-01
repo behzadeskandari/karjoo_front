@@ -28,7 +28,7 @@ export default function Stepper({
       element.push(
         <span
           key={index}
-          className={currentStep >= index ? "step active" : "step"}
+          className={currentStep >= index ? "stepper active" : "stepper"}
         >
           {index + 1}
         </span>

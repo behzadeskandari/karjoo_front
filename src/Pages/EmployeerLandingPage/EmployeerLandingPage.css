@@ -1,5 +1,4 @@
 #root{
-    width: 98vw !important;
 }
 
 
@@ -22,18 +21,25 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     text-align: right;
-    justify-content: right;
-    gap: 10px;
-    padding-right: 1em;
-    padding-top: 2em;
+    gap: 100px;
+    padding-top: 2em;    
+    justify-content: center;
 }
 .cs-card{
     display: flex;
     flex-flow: row;
+    line-height: 2.1;
+    background-color: #FFA500;
+    border: 1px solid #FFA500;
+    border-radius: 7px;
+    color: #efefef;
+    padding: 10px;
+    height: 5.5em;
+    justify-content: space-around;
 }
 
 .line-height-3{
-    line-height: 3;
+    line-height: 4;
 }
 .orange-badge{
     background-color: orange;
@@ -50,4 +56,15 @@
 .mr-50{
     margin-right: 0px !important;
     margin: 0 50%;
+}
+
+.line-4{
+    line-height: 4;
+}
+
+.cs-right{
+    text-align: right;
+}
+.money-color{
+    color: #2D5DA0;
 }

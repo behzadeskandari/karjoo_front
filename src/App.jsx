@@ -37,11 +37,11 @@ function App() {
           <Route path="/contact" element={<ContactUsPage />} />
           <Route path="/MBTITest" element={<MBTITest />} />
           <Route path="/MBTIResult" element={<MBTIResult />} />
-          <Route path="/*" element={<NoutFound />} />
 
           {/* the Test Route That Has TO Move To After Login */}
           <Route path="/profile" element={<ProfileEntryForm />} />
           <Route path="/employer" element={<EmployeerLandingPage />} />
+          <Route path="/*" element={<NoutFound />} />
         </Routes>
       </Router>
     </>
