@@ -12,6 +12,7 @@ import socailMedia from "../../assets/images/socailMedia.png";
 import { debounce } from "../../utility";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import PriceCard from "../../components/PriceCard";
+import StepIndicator from "../../components/StepIndicator";
 export default function EmployeerLandingPage() {
   const [isDesktop, setIsDesktop] = useState(false);
   const [dimensions, setDimensions] = React.useState({
@@ -429,6 +430,9 @@ export default function EmployeerLandingPage() {
           <div className="col-sm-12 col-md-4 col-lg-4"></div>
           <div className="col-sm-12 col-md-4 col-lg-4"></div>
         </div>
+      </Box>
+      <Box>
+        <StepIndicator steps={5} />
       </Box>
     </Box>
   );
