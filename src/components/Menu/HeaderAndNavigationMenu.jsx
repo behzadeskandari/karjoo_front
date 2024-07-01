@@ -97,6 +97,13 @@ export default function HeaderAndNavigationMenu() {
     });
     handleDrawerToggle();
   };
+  const handleNavigateToLoginToEmployeer = () => {
+    navigate({
+      pathname: "/employer",
+    });
+    handleDrawerToggle();
+  };
+
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
@@ -313,10 +320,9 @@ export default function HeaderAndNavigationMenu() {
                 onClick={handleClose}
               >
                 <Button
-                  sx={{ color: "#fff", fontFamily: "IRANSans" }}
+                  sx={{ color: "#000", fontFamily: "IRANSans" }}
                   onClick={handleNavigateMBTITest}
                 >
-                  {" "}
                   تست MBTI
                 </Button>
               </MenuItem>
@@ -401,6 +407,12 @@ export default function HeaderAndNavigationMenu() {
             >
               ثبت نام{" "}
             </Button>
+            <Button
+              color="secondary"
+              onClick={handleNavigateToLoginToEmployeer}
+              sx={{ fontFamily: "IRANSans" }}
+              title="بخش کارفرمایان / ثبت آگهی"
+            ></Button>
           </Box>
         </Toolbar>
       </AppBar>

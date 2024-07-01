@@ -18,6 +18,8 @@ import HeaderAndNavigationMenu from "./components/Menu/HeaderAndNavigationMenu";
 import NoutFound from "./Pages/NotFound/NoutFound";
 import MBTIResult from "./Pages/MBTI/MBTIResult";
 import MBTITest from "./Pages/MBTI/MBTITest";
+import ProfileEntryForm from "./Pages/ProfilePage/ProfileEnteryForm";
+import EmployeerLandingPage from "./Pages/EmployeerLandingPage/EmployeerLandingPage";
 
 function App() {
   //region return
@@ -36,6 +38,10 @@ function App() {
           <Route path="/MBTITest" element={<MBTITest />} />
           <Route path="/MBTIResult" element={<MBTIResult />} />
           <Route path="/*" element={<NoutFound />} />
+
+          {/* the Test Route That Has TO Move To After Login */}
+          <Route path="/profile" element={<ProfileEntryForm />} />
+          <Route path="/employer" element={<EmployeerLandingPage />} />
         </Routes>
       </Router>
     </>

@@ -22,6 +22,7 @@ import Footer from "./Footer/Footer";
 import Loader from "../../components/Loader/Loader";
 import QuestionAnswerWhyUs from "./Footer/QuestionAnswerWhyUs";
 import { useThemeToggle } from "../../wrapper/ThemeProviderWrapper";
+
 // import Footer from "./Constant/MainPage/Footer/Footer";
 export default function HomePAGE() {
   const toggleTheme = useThemeToggle();
