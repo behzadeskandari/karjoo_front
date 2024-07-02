@@ -42,7 +42,7 @@
     line-height: 4;
 }
 .orange-badge{
-    background-color: orange;
+    background-color: #FFA500;
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -52,6 +52,9 @@
     width: 50%;
     margin-right: 0px !important;
     margin: 0 50%;
+    height: 2.5em;
+    line-height: 2.4;
+    padding-right: 1.5em;
 }
 .mr-50{
     margin-right: 0px !important;
@@ -67,4 +70,44 @@
 }
 .money-color{
     color: #2D5DA0;
+}
+
+.Gift-card{
+    background-color: #f7f4f4 !important;
+    display: flex;
+    justify-content: center;
+    gap: 72px;
+    padding-top: 20px;
+}
+
+.special-offer{
+    background-color: #fff !important;
+
+    box-shadow: 0 1px 30px #00000008, 0 1px 2px #0000000d !important;
+    border-radius: 10px !important;
+    
+}
+
+.custom_card{
+    padding-top: 1.5em;
+    padding-right: 1.5em;
+}
+.font-bolder{
+    margin-top: 1em;
+    font-size: 1.1em;
+    font-weight: bolder;
+}
+.line-holder{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+.dotted-line{
+    border-bottom: 1px dotted #FFA500;
+    display: inline-block;
+    margin-inline: 11px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    width: 90%;
+    margin-bottom: 10px;
 }

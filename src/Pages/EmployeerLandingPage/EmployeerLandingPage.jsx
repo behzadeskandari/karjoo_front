@@ -3,20 +3,15 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./EmployeerLandingPage.css";
 import Carousel from "../../components/Carousel/Carousel";
 import logo from "../../assets/images/1.jpg";
-import resume from "../../assets/images/resume.png";
-import panelAdmin from "../../assets/images/panelAdmin.png";
-import Salary from "../../assets/images/Salary.png";
-import Consulting from "../../assets/images/Consulting.png";
-import EducationalResume from "../../assets/images/EducationalResume.png";
-import socailMedia from "../../assets/images/socailMedia.png";
 import { debounce } from "../../utility";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import PriceCard from "../../components/PriceCard";
 import StepIndicator from "../../components/StepIndicator";
-import { ArrowBack } from "@mui/icons-material";
-import AddHomeIcon from '@mui/icons-material/AddHome';
-import CoPresentIcon from '@mui/icons-material/CoPresent';
-import VerifiedIcon from '@mui/icons-material/Verified';
+
+import Footer from "../MainPage/Footer/Footer";
+import GiftCard from "./GiftCard";
+import CustomHeader from "./CustomHeader";
+import LandingPageDetailCard from "./LandingPageDetailCard";
 
 export default function EmployeerLandingPage() {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -191,7 +186,8 @@ export default function EmployeerLandingPage() {
   ];
 
   return (
-    <Box className="container">
+    //container
+    <Box className="row px-2">
       <div className="row">
         <div className="col-12 col-md-12">
           <div className="col-12 col-md-12 text-right text-secondary mt-7">
@@ -220,224 +216,18 @@ export default function EmployeerLandingPage() {
       </div>
       <Divider variant="middle" component="section" />
       <div className="row">
-        <div className="col-12 col-md-12">
-          <h4 className="text-center mt-4 text-secondary">
-            چرا کارفرمایان کارجو را ترجیح میدهند
-          </h4>
-
-          <div
-            className={`${
-              isDesktop ? "flex-row" : "flex-column"
-            } col-12 col-md-12 d-flex  mt-5`}
-          >
-            <div className="col-md-4 col-12 col-md-4 text-md-right text-center">
-              <div className="text-right my-4">
-                <img
-                  src={resume}
-                  alt="رزومه"
-                  className="img-fluid"
-                  style={{ width: "55px", height: "55px" }}
-                />
-              </div>
-              <h5 className="text-secondary align-right">
-                دریافت روزمه های مرتبط و با کیفیت تر
-              </h5>
-              <p className="align-right my-4 px-1 ">
-                به کمک سیستم هوشمند تشحیص رزومه و موقعیت شغلی و همچنین پردازش
-                های هوش مصنوعی رزومه های مرتبط تر و با کیفیت تر نسبت به سایر
-                رقبا دریافت میکنید{" "}
-              </p>
-            </div>
-            <div className="col-md-4 col-12 col-md-4 text-md-right text-center">
-              <div className="text-right my-4">
-                <img
-                  src={panelAdmin}
-                  alt="رزومه"
-                  className="img-fluid"
-                  style={{ width: "55px", height: "55px" }}
-                />
-              </div>
-
-              <h5 className="text-secondary align-right">
-                پنل کاربردی مدیریت رزومه ها
-              </h5>
-              <p className="align-right my-4 px-1 ">
-                ساختار یکپارچه و استاندارد رزومه ها، نمایش اطلاعات مهم رزومه در
-                نگاه اول، مشاهده انطباق رزومه کارجو با شرایط مد نظر کارفرما،
-                فرایند بررسی رزومه ها را ساده، سریع و کارآمد کرده است.
-              </p>
-            </div>
-            <div className="col-md-4 col-12 col-md-4 text-md-right text-center">
-              <div className="text-right my-4">
-                <img
-                  src={Salary}
-                  alt="رزومه"
-                  className="img-fluid"
-                  style={{ width: "55px", height: "55px" }}
-                />
-              </div>
-
-              <h5 className="text-secondary align-right">
-                آگاهی از حقوق درخواستی کارجویان
-              </h5>
-              <p className="align-right my-4 px-1 ">
-                یکی از مهمترین شاخص ها برای بررسی رزومه، حقوق درخواستی کارجوست.
-                در جاب‌ویژن، از حقوق درخواستی همه رزومه ها بصورت کاملا شفاف
-                اطلاع خواهید داشت.
-              </p>
-            </div>
-          </div>
-          <div
-            className={`${
-              isDesktop ? "flex-row" : "flex-column"
-            } col-12 col-md-12 d-flex  mt-5`}
-          >
-            <div className="col-sm-4 col-12 col-md-4 text-md-right text-center">
-              <div className="text-right my-4">
-                <img
-                  src={Consulting}
-                  alt="رزومه"
-                  className="img-fluid"
-                  style={{ width: "55px", height: "55px" }}
-                />
-              </div>
-              <h5 className="text-secondary align-right">
-                مشاوره و پشتیبانی حرفه ای برای دریافت بهترین نتیجه
-              </h5>
-              <p className="align-right my-4 px-1">
-                مشاوران و پشتیبانان جاب‌ویژن افرادی مجرب و آموزش دیده هستند که
-                هنگام ثبت فرصت شغلی، جستجو در بانک رزومه و ... در کنار شما هستند
-                تا بهترین نتیجه را بگیرید.
-              </p>
-            </div>
-            <div className="col-sm-4  col-12 col-md-4 text-md-right text-center">
-              <div className="text-right my-4">
-                <img
-                  src={EducationalResume}
-                  alt="رزومه"
-                  className="img-fluid"
-                  style={{ width: "55px", height: "55px" }}
-                />
-              </div>
-
-              <h5 className="text-secondary align-right">
-                دسترسی به رزومه فارغ التحصیلان برترین موسسات آموزشی
-              </h5>
-              <p className="align-right my-4 px-1 ">
-                به واسطه ی همکاری با معتبرترین موسسات آموزشی، به رزومه های فارغ
-                التحصیلان برتر این موسسات در جاب‌ویژن دسترسی دارید.{" "}
-              </p>
-            </div>
-            <div className="col-sm-4 col-12 col-md-4 text-md-right text-center">
-              <div className="text-right my-4">
-                <img
-                  src={socailMedia}
-                  alt="رزومه"
-                  className="img-fluid"
-                  style={{ width: "55px", height: "55px" }}
-                />
-              </div>
-              <h5 className="text-secondary align-right">
-                شبکه اجتماعی قدرتمند
-              </h5>
-              <p className="align-right my-4 px-1">
-                بیش از 500 هزار متخصص، ربات و کانال تلگرام، صفحات لینکدین،
-                اینستاگرام و توییتر جاب‌ویژن را دنبال می کنند.
-              </p>
-            </div>
-          </div>
-        </div>
+        <LandingPageDetailCard isDesktop={isDesktop} />
       </div>
       <Box className="d-flex flex-row justify-content-center customBox-prices">
-        <span className="col-3 pt-5">
-          <h6>تعرفه خدمات جاب ویژن</h6>
-          <div className=" cs-card ">
-            <div>
-              <span className="line-4"> <ArrowBack/></span>
-            </div>
-            <div className=" d-flex flex-column">
-              <span>ثبت آگهی</span>
-              <span>شروع قیمت از 950000 تومان</span>
-            </div>
-
-            <div className="line-height-3">
-              <span>
-               <VerifiedIcon/>
-              </span>
-            </div>
-          </div>
-        </span>
-        <span className="col-3 pt-5">
-          <h6>خرید رزومه از بانک رزومه</h6>
-          <div className=" cs-card">
-            <div>
-              <span className="line-4"><ArrowBack/></span>
-            </div>
-            <div className="d-flex flex-column">
-              <span>ثبت آگهی</span>
-              <span>شروع قیمت از 950000 تومان</span>
-            </div>
-            <div className="line-height-3">
-              <span><CoPresentIcon/></span>
-            </div>
-          </div>
-        </span>
-        <span className="col-3 pt-5">
-          <h6>تعرفه خدمات جاب ویژن</h6>
-          <div className=" cs-card">
-            <div>
-              <span className="line-4"><ArrowBack/></span>
-            </div>
-            <div className=" d-flex flex-column">
-              <span>ثبت آگهی</span>
-              <span>شروع قیمت از 950000 تومان</span>
-            </div>
-            <div className="line-height-3">
-              <span><AddHomeIcon/></span>
-            </div>
-          </div>
-        </span>
+        <CustomHeader />
       </Box>
       <Box>
         <PriceCard />
       </Box>
-      <Box>
-        <div className="Gift-card">
-          <div className="col-sm-12 col-md-4 col-lg-4">
-            <div className="d-flex flex-column">
-              <span className="text-right orange-badge">هدیه کارجو</span>
-              <span className="text-right mr-50">تخفیف %100 اولین آگهی </span>
-            </div>
-            <span className="dotted-line">
-              <svg width="300px" height="200px" viewBox="0 0 300 200">
-                <line
-                  x1="40"
-                  x2="260"
-                  y1="100"
-                  y2="100"
-                  stroke="#5184AF"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-dasharray="1, 10"
-                />
-              </svg>
-            </span>
-            <div className="d-flex flex-row">
-              <div className="d-flex flex-column">
-                <span>کد تخفیف</span>
-                <span>Welcome</span>
-              </div>
-              <div>
-                <button className="custom__ButtonCard">ثبت آگهی</button>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-4 col-lg-4"></div>
-          <div className="col-sm-12 col-md-4 col-lg-4"></div>
-        </div>
+      <Box className="padd-0">
+        <GiftCard />
       </Box>
-      <Box>
-      </Box>
+      <Footer isDesktop={isDesktop} logo={logo}></Footer>
     </Box>
   );
 }
