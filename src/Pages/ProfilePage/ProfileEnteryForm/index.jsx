@@ -1,13 +1,37 @@
 import { Box } from "@mui/material";
-import React from "react";
-
+import React, { Fragment, useEffect, useLayoutEffect, useState } from "react";
+import Footer from "../../MainPage/Footer/Footer";
+import logo from "../../../assets/images/1.jpg";
+import { useIsDesktop } from "../../../hooks/useIsDesktop";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 // import { Container } from './styles';
 
 function ProfileEntryForm() {
+  const isDesktop = useIsDesktop();
+  const [step, setStep] = useState(1);
   return (
     <Box>
-      <h2>(رابط سازمانی) اطلاعات کاربر </h2>
-      <h3>هیج یک اذ اطلاعات رابط سازمانی به کارجویان نمایش نمی شود</h3>
+      <TransitionGroup>
+        <CSSTransition key={step} timeout={300} classNames="step">
+          {step === 1 ? <StepOneProfileEntry /> : <StepTwoProfileEntry />}
+        </CSSTransition>
+      </TransitionGroup>
+      <Footer isDesktop={isDesktop} logo={logo} />
+    </Box>
+  );
+}
+
+export default ProfileEntryForm;
+
+const StepOneProfileEntry = () => {
+  return (
+    <Fragment>
+      <h2 className="text-right color-grey py-5">
+        (رابط سازمانی) اطلاعات کاربر{" "}
+      </h2>
+      <h3 className="text-right color-grey py-2">
+        هیج یک از اطلاعات رابط سازمانی به کارجویان نمایش نمی شود
+      </h3>
       <Box>
         <div className="container">
           <div className="row">
@@ -135,8 +159,10 @@ function ProfileEntryForm() {
           </div>
         </div>
       </Box>
-    </Box>
+    </Fragment>
   );
-}
+};
 
-export default ProfileEntryForm;
+const StepTwoProfileEntry = () => {};
+
+const StepThreeProfileEntry = () => {};

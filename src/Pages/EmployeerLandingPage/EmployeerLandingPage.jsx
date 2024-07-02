@@ -12,52 +12,54 @@ import Footer from "../MainPage/Footer/Footer";
 import GiftCard from "./GiftCard";
 import CustomHeader from "./CustomHeader";
 import LandingPageDetailCard from "./LandingPageDetailCard";
+import { useIsDesktop } from "../../hooks/useIsDesktop";
 
 export default function EmployeerLandingPage() {
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [dimensions, setDimensions] = React.useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
-  const [isWidthDetected, setIsWidthDetected] = useState(false);
-  useLayoutEffect(() => {
-    const debouncedHandleResize = debounce(function handleResize() {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    }, 50);
-    setIsWidthDetected(true);
-    if (dimensions.width < 769) {
-      setIsDesktop(false);
-    } else {
-      setIsDesktop(true);
-    }
-    window.addEventListener("resize", debouncedHandleResize);
+  const isDesktop = useIsDesktop();
+  // const [isDesktop, setIsDesktop] = useState(false);
+  // const [dimensions, setDimensions] = React.useState({
+  //   height: window.innerHeight,
+  //   width: window.innerWidth,
+  // });
+  // const [isWidthDetected, setIsWidthDetected] = useState(false);
+  // useLayoutEffect(() => {
+  //   const debouncedHandleResize = debounce(function handleResize() {
+  //     setDimensions({
+  //       height: window.innerHeight,
+  //       width: window.innerWidth,
+  //     });
+  //   }, 50);
+  //   setIsWidthDetected(true);
+  //   if (dimensions.width < 769) {
+  //     setIsDesktop(false);
+  //   } else {
+  //     setIsDesktop(true);
+  //   }
+  //   window.addEventListener("resize", debouncedHandleResize);
 
-    return (_) => {
-      window.removeEventListener("resize", debouncedHandleResize);
-    };
-  }, []);
+  //   return (_) => {
+  //     window.removeEventListener("resize", debouncedHandleResize);
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    const debouncedHandleResize = debounce(function handleResize() {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    }, 50);
+  // useEffect(() => {
+  //   const debouncedHandleResize = debounce(function handleResize() {
+  //     setDimensions({
+  //       height: window.innerHeight,
+  //       width: window.innerWidth,
+  //     });
+  //   }, 50);
 
-    if (dimensions.width < 769) {
-      setIsDesktop(false);
-    } else {
-      setIsDesktop(true);
-    }
-    window.addEventListener("resize", debouncedHandleResize);
-    return (_) => {
-      window.removeEventListener("resize", debouncedHandleResize);
-    };
-  }, [isDesktop, dimensions]);
+  //   if (dimensions.width < 769) {
+  //     setIsDesktop(false);
+  //   } else {
+  //     setIsDesktop(true);
+  //   }
+  //   window.addEventListener("resize", debouncedHandleResize);
+  //   return (_) => {
+  //     window.removeEventListener("resize", debouncedHandleResize);
+  //   };
+  // }, [isDesktop, dimensions]);
 
   const clickEvent = () => {
     alert("Button clicked!");
@@ -187,7 +189,7 @@ export default function EmployeerLandingPage() {
 
   return (
     //container
-    <Box className="row px-2">
+    <Box className="row px-2 padd-0">
       <div className="row">
         <div className="col-12 col-md-12">
           <div className="col-12 col-md-12 text-right text-secondary mt-7">
@@ -218,10 +220,10 @@ export default function EmployeerLandingPage() {
       <div className="row">
         <LandingPageDetailCard isDesktop={isDesktop} />
       </div>
-      <Box className="d-flex flex-row justify-content-center customBox-prices">
+      <Box className="d-flex flex-row justify-content-center customBox-prices padd-0">
         <CustomHeader />
       </Box>
-      <Box>
+      <Box className="padd-0">
         <PriceCard />
       </Box>
       <Box className="padd-0">

@@ -3,7 +3,7 @@ import React from "react";
 export default function GiftCard() {
   return (
     <div className="Gift-card padd-25">
-      <div className="col-sm-12 col-md-2 col-lg-2 special-offer">
+      <div className="col-sm-12 col-md-2 col-lg-3 special-offer m-2  gx-1">
         <div className="d-flex flex-column custom_card">
           <span className="text-right orange-badge">هدیه کارجو</span>
           <p className="text-center font-bolder">
@@ -20,7 +20,7 @@ export default function GiftCard() {
           </div>
         </div>
       </div>
-      <div className="col-sm-12 col-md-2 col-lg-2 special-offer">
+      <div className="col-sm-12 col-md-2 col-lg-3 special-offer m-2  gx-1">
         <div className="d-flex flex-column custom_card">
           <span className="text-right orange-badge">هدیه کارجو</span>
           <p className="text-center font-bolder">
@@ -43,7 +43,7 @@ export default function GiftCard() {
           </div>
         </div>
       </div>
-      <div className="col-sm-12 col-md-2 col-lg-2 special-offer">
+      <div className="col-sm-12 col-md-2 col-lg-3 special-offer m-2 gx-1">
         <div className="d-flex flex-column custom_card">
           <span className="text-right orange-badge">هدیه کارجو</span>
           <span className="text-right mr-50 font-bolder">

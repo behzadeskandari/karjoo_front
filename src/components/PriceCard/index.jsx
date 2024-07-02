@@ -25,7 +25,7 @@ export default function PriceCard() {
         </h5>
       </div>
       <div className="row justify-content-center">
-        <div className="pricing-column col-lg-2 col-md-2">
+        <div className="pricing-column col-sm-12 col-lg-3 col-md-6">
           <div className="card">
             <div className="card-header">
               <h3>اعتبار 60 روزه</h3>
@@ -61,7 +61,7 @@ export default function PriceCard() {
           </div>
         </div>
 
-        <div className="pricing-column col-lg-2 col-md-2">
+        <div className="pricing-column col-sm-12 col-lg-3 col-md-6">
           <div className="card">
             <div className="card-header">
               <h3>اعتبار 45 روزه</h3>
@@ -97,7 +97,7 @@ export default function PriceCard() {
           </div>
         </div>
 
-        <div className="pricing-column col-lg-2 col-md-2">
+        <div className="pricing-column col-sm-12 col-lg-3 col-md-6">
           <div className="card">
             <div className="card-header">
               <h3>اعتبار 30 روزه</h3>
@@ -133,7 +133,7 @@ export default function PriceCard() {
           </div>
         </div>
 
-        <div className="pricing-column col-lg-2 col-md-2">
+        <div className="pricing-column col-sm-12 col-lg-3 col-md-6">
           <div className="card">
             <div className="card-header">
               <h3>اعتبار 30 روزه</h3>

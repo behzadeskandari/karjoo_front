@@ -76,7 +76,7 @@
     background-color: #f7f4f4 !important;
     display: flex;
     justify-content: center;
-    gap: 72px;
+    /* gap: 72px; */
     padding-top: 20px;
 }
 

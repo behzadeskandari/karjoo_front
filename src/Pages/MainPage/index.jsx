@@ -63,21 +63,6 @@ export default function HomePAGE() {
   //options
   //region Effects
   useLayoutEffect(() => {
-    // const handleResize = () => {
-    //   setBrowserWidth(window.innerWidth);
-    // };
-
-    // // Set initial width
-    // handleResize();
-    // setIsWidthDetected(true);
-
-    // // Add event listener to update width on resize
-    // window.addEventListener('resize', handleResize);
-
-    // // Clean up the event listener on component unmount
-    // return () => {
-    //   window.removeEventListener('resize', handleResize);
-    // };
     const debouncedHandleResize = debounce(function handleResize() {
       setDimensions({
         height: window.innerHeight,
