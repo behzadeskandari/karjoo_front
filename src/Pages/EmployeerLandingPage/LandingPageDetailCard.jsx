@@ -8,7 +8,7 @@ import EducationalResume from "../../assets/images/EducationalResume.png";
 import socailMedia from "../../assets/images/socailMedia.png";
 export default function LandingPageDetailCard({ isDesktop }) {
   return (
-    <div className="col-12 col-md-12 ms-3 ml-auto mt-2">
+    <div className="col-12 col-md-12  ml-auto mt-2">
       <h4 className="text-center mt-4 text-secondary">
         چرا کارفرمایان کارجو را ترجیح میدهند
       </h4>

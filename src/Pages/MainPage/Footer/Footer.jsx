@@ -67,24 +67,10 @@ export default function Footer({ isDesktop, logo }) {
       <Box
         className={`${
           isDesktop == true
-            ? "col-12 col-md-12  d-flex  flex-row "
-            : "col-12 col-md-12  d-flex  flex-column "
+            ? "col-12 col-md-12  d-flex justify-content-center  flex-row "
+            : "col-12 col-md-12  d-flex justify-content-center flex-column "
         }`}
       >
-        <div
-          className={`${
-            isDesktop == true
-              ? "col-3 col-md-3 flex-cs-box"
-              : "col-12 col-md-12 mt-2 NamadsHolder "
-          }`}
-        >
-          <Box bgcolor={"info.main"} className="background-white">
-            <img src={logo} alt="enamad" />
-          </Box>
-          <Box bgcolor={"info.main"} className="background-white">
-            <img src={logo} alt="samandehi.ir" />
-          </Box>
-        </div>
         <div
           className={`${
             isDesktop == true ? "col-3 col-md-3" : "col-12 col-md-12 mt-5"
@@ -155,6 +141,20 @@ export default function Footer({ isDesktop, logo }) {
           </span>
         </div>
       </Box>
+      <div
+        className={`${
+          isDesktop == true
+            ? "col-3 col-md-3 flex-cs-box"
+            : "col-12 col-md-12 mt-2 NamadsHolder "
+        }`}
+      >
+        <Box bgcolor={"info.main"} className="background-white">
+          <img src={logo} alt="enamad" />
+        </Box>
+        <Box bgcolor={"info.main"} className="background-white">
+          <img src={logo} alt="samandehi.ir" />
+        </Box>
+      </div>
       <Divider>
         <Chip
           label="معرفی كارجو"

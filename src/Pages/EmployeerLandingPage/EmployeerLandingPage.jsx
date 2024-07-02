@@ -1,5 +1,5 @@
 import { Box, Divider } from "@mui/material";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { Fragment, useEffect, useLayoutEffect, useState } from "react";
 import "./EmployeerLandingPage.css";
 import Carousel from "../../components/Carousel/Carousel";
 import logo from "../../assets/images/1.jpg";
@@ -189,47 +189,49 @@ export default function EmployeerLandingPage() {
 
   return (
     //container
-    <Box className="row px-2 padd-0">
-      <div className="row">
-        <div className="col-12 col-md-12">
-          <div className="col-12 col-md-12 text-right text-secondary mt-7">
-            <h3>کار را به کاردان بسپارید جذب نیرو توسط کارجو</h3>
-            <h4>کارجو همراه شما در جذب حرفه ای ترین نیروها </h4>
+    <Fragment>
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-md-12">
+            <div className="col-12 col-md-12 text-right text-secondary mt-7">
+              <h3>کار را به کاردان بسپارید جذب نیرو توسط کارجو</h3>
+              <h4>کارجو همراه شما در جذب حرفه ای ترین نیروها </h4>
+            </div>
+            <div className="col-md-4 col-4"></div>
+            <div className="col-md-4 col-4">
+              <span className="btnHolder">
+                <button
+                  className="custom__ButtonCard"
+                  onClick={() => console.log("testonebutton")}
+                >
+                  ثبت آگهی
+                </button>
+              </span>
+            </div>
+            <div className="col-md-4 col-4"></div>
           </div>
-          <div className="col-md-4 col-4"></div>
-          <div className="col-md-4 col-4">
-            <span className="btnHolder">
-              <button
-                className="custom__ButtonCard"
-                onClick={() => console.log("testonebutton")}
-              >
-                ثبت آگهی
-              </button>
+          <div className="col-12 col-md-12 text-center text-secondary fs-3 mt-4 d-flex flex-column">
+            <span>کارجو ، مورد اعتماد بهترین سازمان ها</span>
+            <span className="mt-3">
+              <Carousel items={items} />
             </span>
           </div>
-          <div className="col-md-4 col-4"></div>
         </div>
-        <div className="col-12 col-md-12 text-center text-secondary fs-3 mt-4 d-flex flex-column">
-          <span>کارجو ، مورد اعتماد بهترین سازمان ها</span>
-          <span className="mt-3">
-            <Carousel items={items} />
-          </span>
+        <Divider variant="middle" component="section" />
+        <div className="row">
+          <LandingPageDetailCard isDesktop={isDesktop} />
         </div>
+        <Box className="d-flex flex-row justify-content-center customBox-prices padd-0">
+          <CustomHeader />
+        </Box>
+        <Box className="padd-0">
+          <PriceCard />
+        </Box>
+        <Box className="padd-0">
+          <GiftCard />
+        </Box>
       </div>
-      <Divider variant="middle" component="section" />
-      <div className="row">
-        <LandingPageDetailCard isDesktop={isDesktop} />
-      </div>
-      <Box className="d-flex flex-row justify-content-center customBox-prices padd-0">
-        <CustomHeader />
-      </Box>
-      <Box className="padd-0">
-        <PriceCard />
-      </Box>
-      <Box className="padd-0">
-        <GiftCard />
-      </Box>
       <Footer isDesktop={isDesktop} logo={logo}></Footer>
-    </Box>
+    </Fragment>
   );
 }
