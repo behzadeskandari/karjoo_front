@@ -217,20 +217,21 @@ export default function EmployeerLandingPage() {
             </span>
           </div>
         </div>
-        <Divider variant="middle" component="section" />
-        <div className="row">
-          <LandingPageDetailCard isDesktop={isDesktop} />
-        </div>
-        <Box className="d-flex flex-row justify-content-center customBox-prices padd-0">
-          <CustomHeader />
-        </Box>
-        <Box className="padd-0">
-          <PriceCard />
-        </Box>
-        <Box className="padd-0">
-          <GiftCard />
-        </Box>
       </div>
+
+      <Divider variant="middle" component="section" />
+      <Box>
+        <LandingPageDetailCard isDesktop={isDesktop} />
+      </Box>
+      <Box className="d-flex flex-row justify-content-center customBox-prices padd-0">
+        <CustomHeader />
+      </Box>
+      <Box className="padd-0">
+        <PriceCard />
+      </Box>
+      <Box className="padd-0">
+        <GiftCard />
+      </Box>
       <Footer isDesktop={isDesktop} logo={logo}></Footer>
     </Fragment>
   );

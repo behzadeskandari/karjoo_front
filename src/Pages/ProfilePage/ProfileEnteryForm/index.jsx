@@ -38,15 +38,15 @@ const StepOneProfileEntry = () => {
             <div className="col-4 col-md-4 col-lg-4">
               <div className="form-group my-4">
                 <label
-                  htmlFor="InputUser"
+                  htmlFor="InputProfileName"
                   className="InputUser color-grey mt-4"
                 >
-                  شماره موبایل یا ایمیل خود را وارد کنید
+                  نام
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="InputUser"
+                  id="InputProfileName"
                   value={""}
                   onChange={() => console.log("test")}
                   placeholder=""
@@ -56,15 +56,15 @@ const StepOneProfileEntry = () => {
             <div className="col-4 col-md-4 col-4">
               <div className="form-group my-4">
                 <label
-                  htmlFor="InputUser"
+                  htmlFor="InputUserLastName"
                   className="InputUser color-grey mt-4"
                 >
-                  شماره موبایل یا ایمیل خود را وارد کنید
+                  نام خانوادگی
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="InputUser"
+                  id="InputUserLastName"
                   value={""}
                   onChange={() => console.log("test")}
                   placeholder=""
@@ -74,76 +74,25 @@ const StepOneProfileEntry = () => {
             <div className="col-4 col-md-4 col-4">
               <div className="form-group my-4">
                 <label
-                  htmlFor="InputUser"
+                  htmlFor="InputOrganizationPosition"
                   className="InputUser color-grey mt-4"
                 >
-                  شماره موبایل یا ایمیل خود را وارد کنید
+                  سمت سازمانی
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="InputUser"
+                  id="InputOrganizationPosition"
                   value={""}
                   onChange={() => console.log("test")}
                   placeholder=""
                 />
               </div>
             </div>
-            <div className="col-4 col-md-4 col-lg-4">
-              <div className="form-group my-4">
-                <label
-                  htmlFor="InputUser"
-                  className="InputUser color-grey mt-4"
-                >
-                  شماره موبایل یا ایمیل خود را وارد کنید
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="InputUser"
-                  value={""}
-                  onChange={() => console.log("test")}
-                  placeholder=""
-                />
-              </div>
-            </div>
-            <div className="col-4 col-md-4 col-lg-4">
-              <div className="form-group my-4">
-                <label
-                  htmlFor="InputUser"
-                  className="InputUser color-grey mt-4"
-                >
-                  شماره موبایل یا ایمیل خود را وارد کنید
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="InputUser"
-                  value={""}
-                  onChange={() => console.log("test")}
-                  placeholder=""
-                />
-              </div>
-            </div>
-            <div className="col-4 col-md-4 col-lg-4">
-              <div className="form-group my-4">
-                <label
-                  htmlFor="InputUser"
-                  className="InputUser color-grey mt-4"
-                >
-                  شماره موبایل یا ایمیل خود را وارد کنید
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="InputUser"
-                  value={""}
-                  onChange={() => console.log("test")}
-                  placeholder=""
-                />
-              </div>
-            </div>
-            <div className="col-4 col-md-4 col-lg-4">
+            <div
+              className="col-4 col-md-4 col-lg-4 align-content-end"
+              style={{ paddingBottom: "1em" }}
+            >
               <span className="btnHolder">
                 <button
                   className="custom__ButtonCard"
@@ -154,6 +103,44 @@ const StepOneProfileEntry = () => {
               </span>
             </div>
 
+            <div className="col-4 col-md-4 col-lg-4">
+              <div className="form-group my-4">
+                <label
+                  htmlFor="InputUserCellPhone"
+                  className="InputUser color-grey mt-4"
+                >
+                  تلفن همراه
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="InputUserCellPhone"
+                  value={""}
+                  onChange={() => console.log("test")}
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div className="col-4 col-md-4 col-lg-4">
+              <div className="form-group my-4">
+                <label
+                  htmlFor="InputUserOrganizationPhone"
+                  className="InputUser color-grey mt-4"
+                >
+                  شماره تلفن سازمان مستقیم شما
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="InputUserOrganizationPhone"
+                  value={""}
+                  onChange={() => console.log("test")}
+                  placeholder=""
+                />
+              </div>
+            </div>
+
+            <div className="col-4 col-md-4 col-lg-4"></div>
             <div className="col-4 col-md-4 col-lg-4"></div>
             <div className="col-4 col-md-4 col-lg-4"></div>
           </div>

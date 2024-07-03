@@ -76,7 +76,7 @@ export default function Footer({ isDesktop, logo }) {
             isDesktop == true ? "col-3 col-md-3" : "col-12 col-md-12 mt-5"
           }`}
         >
-          <h5 className="text-center iransans text-white">درباره كارجو</h5>
+          <h5 className="text-right py-3 iransans text-white">درباره كارجو</h5>
           <span className="text-right text-white iransans menu mt-2 mb-2">
             <span>درباره ما</span>
           </span>
@@ -101,7 +101,7 @@ export default function Footer({ isDesktop, logo }) {
             isDesktop == true ? "col-3 col-md-3" : "col-12 col-md-12 mt-2"
           }`}
         >
-          <h5 className="text-center iransans text-white">كارفرمایان</h5>
+          <h5 className="text-right py-3 iransans text-white">كارفرمایان</h5>
           <span className="text-right text-white iransans menu mt-2 mb-2">
             ثبت اگهی جدید
           </span>
@@ -123,7 +123,7 @@ export default function Footer({ isDesktop, logo }) {
             isDesktop == true ? "col-3 col-md-3" : "col-12 col-md-12 mt-2"
           }`}
         >
-          <h5 className="text-center iransans text-white">كارجویان</h5>
+          <h5 className="text-right py-3 iransans text-white">كارجویان</h5>
           <span className="text-right text-white iransans menu mt-2 mb-2">
             رزومه ساز
           </span>
@@ -144,14 +144,14 @@ export default function Footer({ isDesktop, logo }) {
       <div
         className={`${
           isDesktop == true
-            ? "col-3 col-md-3 flex-cs-box"
-            : "col-12 col-md-12 mt-2 NamadsHolder "
+            ? "col-12 col-md-12 flex-cs-box justify-content-center py-4"
+            : "col-12 col-md-12 mt-2 NamadsHolder py-4"
         }`}
       >
         <Box bgcolor={"info.main"} className="background-white">
           <img src={logo} alt="enamad" />
         </Box>
-        <Box bgcolor={"info.main"} className="background-white">
+        <Box bgcolor={"info.main"} className="background-white ">
           <img src={logo} alt="samandehi.ir" />
         </Box>
       </div>
