@@ -21,6 +21,7 @@ import MBTITest from "./Pages/MBTI/MBTITest";
 import ProfileEntryForm from "./Pages/ProfilePage/ProfileEnteryForm";
 import EmployeerLandingPage from "./Pages/EmployeerLandingPage/EmployeerLandingPage";
 import StepIndicator from "./components/StepIndicator";
+import JobsPage from "./Pages/JobsPage";
 
 function App() {
   //region return
@@ -46,9 +47,10 @@ function App() {
           <Route path="/MBTIResult" element={<MBTIResult />} />
 
           {/* the Test Route That Has TO Move To After Login */}
-          <Route path="/profile" element={<ProfileEntryForm />} />
-          <Route path="/employer" element={<EmployeerLandingPage />} />
+          <Route path="/profilePage" element={<ProfileEntryForm />} />
+          <Route path="/employerPage" element={<EmployeerLandingPage />} />
           <Route path="/step" element={<StepIndicator steps={steps} />} />
+          <Route path="/JobPage" element={<JobsPage />} />
           <Route path="/*" element={<NoutFound />} />
         </Routes>
       </Router>
