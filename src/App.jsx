@@ -20,9 +20,16 @@ import MBTIResult from "./Pages/MBTI/MBTIResult";
 import MBTITest from "./Pages/MBTI/MBTITest";
 import ProfileEntryForm from "./Pages/ProfilePage/ProfileEnteryForm";
 import EmployeerLandingPage from "./Pages/EmployeerLandingPage/EmployeerLandingPage";
+import StepIndicator from "./components/StepIndicator";
 
 function App() {
   //region return
+  const steps = [
+    { id: 1, value: "step1" },
+    { id: 2, value: "step2" },
+    { id: 3, value: "step3" },
+    { id: 4, value: "step4" },
+  ];
   return (
     <>
       {/* <CssBaseline enableColorSchem={false} />*/}
@@ -41,6 +48,7 @@ function App() {
           {/* the Test Route That Has TO Move To After Login */}
           <Route path="/profile" element={<ProfileEntryForm />} />
           <Route path="/employer" element={<EmployeerLandingPage />} />
+          <Route path="/step" element={<StepIndicator steps={steps} />} />
           <Route path="/*" element={<NoutFound />} />
         </Routes>
       </Router>
