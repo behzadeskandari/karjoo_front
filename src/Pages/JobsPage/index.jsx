@@ -1,5 +1,6 @@
 import { Tab, Tabs } from "@mui/material";
 import React, { Fragment } from "react";
+import CustomModal from "../../components/Modal/index";
 
 export default function JobsPage() {
   const [value, setValue] = React.useState(0);
@@ -9,6 +10,7 @@ export default function JobsPage() {
   };
   return (
     <Fragment>
+      <CustomModal />
       <div className="container  px-4">
         <div className="row gx-5">
           <div className="col-4 d-flex flex-column">
