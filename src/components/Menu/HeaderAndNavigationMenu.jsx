@@ -77,7 +77,7 @@ export default function HeaderAndNavigationMenu() {
     navigate({
       pathname: "/",
     });
-    if(mobileOpen){
+    if (mobileOpen) {
       handleDrawerToggle();
     }
   };
@@ -85,7 +85,7 @@ export default function HeaderAndNavigationMenu() {
     navigate({
       pathname: "/login",
     });
-    if(mobileOpen){
+    if (mobileOpen) {
       handleDrawerToggle();
     }
   };
@@ -93,7 +93,7 @@ export default function HeaderAndNavigationMenu() {
     navigate({
       pathname: "/signup",
     });
-    if(mobileOpen){
+    if (mobileOpen) {
       handleDrawerToggle();
     }
   };
@@ -101,7 +101,7 @@ export default function HeaderAndNavigationMenu() {
     navigate({
       pathname: "/MBTITest",
     });
-    if(mobileOpen){
+    if (mobileOpen) {
       handleDrawerToggle();
     }
   };
@@ -109,7 +109,7 @@ export default function HeaderAndNavigationMenu() {
     navigate({
       pathname: "/employer",
     });
-    if(mobileOpen){
+    if (mobileOpen) {
       handleDrawerToggle();
     }
   };
@@ -422,7 +422,9 @@ export default function HeaderAndNavigationMenu() {
               onClick={handleNavigateToLoginToEmployeer}
               sx={{ fontFamily: "IRANSans" }}
               title="بخش کارفرمایان / ثبت آگهی"
-            >بخش کارفرمایان / ثبت آگهی</Button>
+            >
+              بخش کارفرمایان / ثبت آگهی
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>

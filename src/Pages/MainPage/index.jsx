@@ -22,6 +22,7 @@ import Footer from "./Footer/Footer";
 import Loader from "../../components/Loader/Loader";
 import QuestionAnswerWhyUs from "./Footer/QuestionAnswerWhyUs";
 import { useThemeToggle } from "../../wrapper/ThemeProviderWrapper";
+import CustomSelect from "../../components/Select/CustomSelect";
 
 // import Footer from "./Constant/MainPage/Footer/Footer";
 export default function HomePAGE() {
@@ -179,16 +180,6 @@ export default function HomePAGE() {
   }
 
   const handleProvinceChange = (data) => {
-    // console.log(data, "handleProvince");
-    // setProvince(data);
-    // setSelectedProvince(data);
-    // const cities = data ? ProvinceOptions[data.value] || [] : [];
-    // setCityOptions(cities);
-    // // if (data && data.value) {
-    // //   setIsShowProvince(true);
-    // // } else {
-    // //   setIsShowProvince(false);
-    // // }
     setSelectedProvince(data);
     const cities = data ? ProvinceOptions[data.value] || [] : [];
     setCityOptions(cities);
@@ -418,64 +409,15 @@ export default function HomePAGE() {
                       : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
                   }`}
                 >
-                  <Select
-                    styles={{
-                      control: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isFocused ? "#f0f0f0" : "#fff",
-                        borderColor: state.isFocused ? "#3f51b5" : "#ccc",
-                        boxShadow: state.isFocused
-                          ? "0 0 0 1px #3f51b5"
-                          : "none",
-                        "&:hover": {
-                          borderColor: state.isFocused ? "#3f51b5" : "#888",
-                        },
-                      }),
-                      menu: (provided) => ({
-                        ...provided,
-                        zIndex: 9999,
-                      }),
-                      option: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isSelected
-                          ? "#3f51b5"
-                          : state.isFocused
-                          ? "#f0f0f0"
-                          : "#fff",
-                        color: state.isSelected ? "#fff" : "#333",
-                        "&:active": {
-                          backgroundColor: state.isSelected
-                            ? "#3f51b5"
-                            : "#f0f0f0",
-                        },
-                      }),
-                      placeholder: (provided) => ({
-                        ...provided,
-                        color: "#888",
-                        fontStyle: "italic",
-                        fontSize: ".8em",
-                      }),
-                      singleValue: (provided) => ({
-                        ...provided,
-                        color: "#333",
-                      }),
-                      multiValue: (provided) => ({
-                        ...provided,
-                        backgroundColor: "#e0e0e0",
-                      }),
-                      multiValueLabel: (provided) => ({
-                        ...provided,
-                        color: "#333",
-                      }),
-                      multiValueRemove: (provided) => ({
-                        ...provided,
-                        color: "#888",
-                        "&:hover": {
-                          backgroundColor: "#d32f2f",
-                          color: "#fff",
-                        },
-                      }),
-                    }}
+                  <CustomSelect
+                    options={JobCategoryOptions}
+                    key={1}
+                    loadingMessage={() => "در حال لود"}
+                    noOptionsMessage={() => "موردی انتخاب نشده است"}
+                    tabIndex={2}
+                    placeholder={"گروه شغلی"}
+                  />
+                  {/* <Select
                     loadingMessage={() => "در حال لود"}
                     noOptionsMessage={() => "موردی انتخاب نشده است"}
                     tabIndex={2}
@@ -492,7 +434,7 @@ export default function HomePAGE() {
                     name="JobCategory"
                     options={JobCategoryOptions}
                     placeholder={"گروه شغلی"}
-                  />
+                  /> */}
                 </div>
                 <div
                   className={`${
@@ -501,64 +443,16 @@ export default function HomePAGE() {
                       : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
                   }`}
                 >
-                  <Select
-                    styles={{
-                      control: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isFocused ? "#f0f0f0" : "#fff",
-                        borderColor: state.isFocused ? "#3f51b5" : "#ccc",
-                        boxShadow: state.isFocused
-                          ? "0 0 0 1px #3f51b5"
-                          : "none",
-                        "&:hover": {
-                          borderColor: state.isFocused ? "#3f51b5" : "#888",
-                        },
-                      }),
-                      menu: (provided) => ({
-                        ...provided,
-                        zIndex: 9999,
-                      }),
-                      option: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isSelected
-                          ? "#3f51b5"
-                          : state.isFocused
-                          ? "#f0f0f0"
-                          : "#fff",
-                        color: state.isSelected ? "#fff" : "#333",
-                        "&:active": {
-                          backgroundColor: state.isSelected
-                            ? "#3f51b5"
-                            : "#f0f0f0",
-                        },
-                      }),
-                      placeholder: (provided) => ({
-                        ...provided,
-                        color: "#888",
-                        fontStyle: "italic",
-                        fontSize: ".8em",
-                      }),
-                      singleValue: (provided) => ({
-                        ...provided,
-                        color: "#333",
-                      }),
-                      multiValue: (provided) => ({
-                        ...provided,
-                        backgroundColor: "#e0e0e0",
-                      }),
-                      multiValueLabel: (provided) => ({
-                        ...provided,
-                        color: "#333",
-                      }),
-                      multiValueRemove: (provided) => ({
-                        ...provided,
-                        color: "#888",
-                        "&:hover": {
-                          backgroundColor: "#d32f2f",
-                          color: "#fff",
-                        },
-                      }),
-                    }}
+                  <CustomSelect
+                    options={TechnicalOptions}
+                    key={2}
+                    loadingMessage={() => "در حال لود"}
+                    noOptionsMessage={() => "موردی انتخاب نشده است"}
+                    tabIndex={3}
+                    placeholder={"ارشدیت"}
+                  />
+                  {/* <Select
+                    
                     loadingMessage={() => "در حال لود"}
                     noOptionsMessage={() => "موردی انتخاب نشده است"}
                     tabIndex={4}
@@ -577,7 +471,7 @@ export default function HomePAGE() {
                     getOptionLabel={(option) => option.label}
                     getOptionValue={(option) => option.value}
                     placeholder={"ارشدیت"}
-                  />
+                  /> */}
                 </div>
                 <div
                   className={`${
@@ -598,10 +492,12 @@ export default function HomePAGE() {
                         "&:hover": {
                           borderColor: state.isFocused ? "#3f51b5" : "#888",
                         },
+                        fontSize: "13px",
                       }),
                       menu: (provided) => ({
                         ...provided,
                         zIndex: 9999,
+                        fontSize: "13px",
                       }),
                       option: (provided, state) => ({
                         ...provided,
@@ -616,24 +512,28 @@ export default function HomePAGE() {
                             ? "#3f51b5"
                             : "#f0f0f0",
                         },
+                        fontSize: "13px",
                       }),
                       placeholder: (provided) => ({
                         ...provided,
                         color: "#888",
                         fontStyle: "italic",
-                        fontSize: ".8em",
+                        fontSize: "13px",
                       }),
                       singleValue: (provided) => ({
                         ...provided,
                         color: "#333",
+                        fontSize: "13px",
                       }),
                       multiValue: (provided) => ({
                         ...provided,
                         backgroundColor: "#e0e0e0",
+                        fontSize: "13px",
                       }),
                       multiValueLabel: (provided) => ({
                         ...provided,
                         color: "#333",
+                        fontSize: "13px",
                       }),
                       multiValueRemove: (provided) => ({
                         ...provided,
@@ -642,6 +542,7 @@ export default function HomePAGE() {
                           backgroundColor: "#d32f2f",
                           color: "#fff",
                         },
+                        fontSize: "13px",
                       }),
                     }}
                     loadingMessage={() => "در حال لود"}
@@ -688,6 +589,7 @@ export default function HomePAGE() {
                       menu: (provided) => ({
                         ...provided,
                         zIndex: 9999,
+                        fontSize: "13px",
                       }),
                       option: (provided, state) => ({
                         ...provided,
@@ -702,24 +604,28 @@ export default function HomePAGE() {
                             ? "#3f51b5"
                             : "#f0f0f0",
                         },
+                        fontSize: "13px",
                       }),
                       placeholder: (provided) => ({
                         ...provided,
                         color: "#888",
                         fontStyle: "italic",
-                        fontSize: ".8em",
+                        fontSize: "13px",
                       }),
                       singleValue: (provided) => ({
                         ...provided,
                         color: "#333",
+                        fontSize: "13px",
                       }),
                       multiValue: (provided) => ({
                         ...provided,
                         backgroundColor: "#e0e0e0",
+                        fontSize: "13px",
                       }),
                       multiValueLabel: (provided) => ({
                         ...provided,
                         color: "#333",
+                        fontSize: "13px",
                       }),
                       multiValueRemove: (provided) => ({
                         ...provided,
@@ -728,6 +634,7 @@ export default function HomePAGE() {
                           backgroundColor: "#d32f2f",
                           color: "#fff",
                         },
+                        fontSize: "13px",
                       }),
                     }}
                     loadingMessage={() => "در حال لود"}

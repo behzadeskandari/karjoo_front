@@ -22,6 +22,7 @@ import ProfileEntryForm from "./Pages/ProfilePage/ProfileEnteryForm";
 import EmployeerLandingPage from "./Pages/EmployeerLandingPage/EmployeerLandingPage";
 import StepIndicator from "./components/StepIndicator";
 import JobsPage from "./Pages/JobsPage";
+import AdvertismentAddPage from "./Pages/AdvertismentAddPage/AdvertismentAddPage";
 
 function App() {
   //region return
@@ -51,6 +52,7 @@ function App() {
           <Route path="/employerPage" element={<EmployeerLandingPage />} />
           <Route path="/step" element={<StepIndicator steps={steps} />} />
           <Route path="/JobPage" element={<JobsPage />} />
+          <Route path="/AdvertismentAdd" element={<AdvertismentAddPage />} />
           <Route path="/*" element={<NoutFound />} />
         </Routes>
       </Router>

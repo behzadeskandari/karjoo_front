@@ -8,55 +8,87 @@ import {
   Modal,
 } from "@mui/material";
 import React, { useEffect } from "react";
-
+import AddLinkIcon from "@mui/icons-material/AddLink";
+import { useNavigate } from "react-router-dom";
 export default function CustomModal() {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    handleClickOpen();
-  });
-  const handleClickOpen = () => {
+    // Open the modal when the component mounts
     setOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    // Close the modal
+    setOpen(false);
+    navigate({
+      pathname: "/AdvertismentAdd",
+    });
   };
+
   return (
     <>
       <AlertDialog
-        text="test description"
+        text=""
         setOpen={setOpen}
         open={open}
-        title={""}
-        buttonTitle={"ثبت نام"}
+        title={"آگهی خود را منتشر کنید"}
+        buttonTitle={"ثبت آگهی"}
+        handleClose={handleClose}
       >
-        {/* <Button variant="outlined" onClick={handleClickOpen}>
-          Open alert dialog
-        </Button> */}
+        <AddLinkIcon
+          sx={{ color: "#93c47d", width: "2.5em", height: "2.5em" }}
+        />
       </AlertDialog>
     </>
   );
 }
 
-function AlertDialog({ text, children, setOpen, open, title, buttonTitle }) {
-  const handleClose = () => {
-    setOpen(false);
-  };
+function AlertDialog(props) {
+  const { text, children, open, title, buttonTitle, handleClose } = props;
 
   return (
     <React.Fragment>
-      {children}
       <Dialog
+        key={1}
+        sx={{ m: 0, p: 2, fontFamily: "IRANSans" }}
+        fullWidth={true}
+        maxWidth="lg"
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+        <DialogTitle
+          sx={{ textAlign: "center", fontFamily: "IRANSans" }}
+          id="alert-dialog-title"
+        >
+          {title}
+        </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText
+            sx={{ textAlign: "center", fontFamily: "IRANSans" }}
+            id="alert-dialog-description"
+          >
             {text}
           </DialogContentText>
+          <DialogContent
+            sx={{
+              textAlign: "center",
+              fontFamily: "IRANSans",
+            }}
+          >
+            <DialogContentText>{children}</DialogContentText>
+          </DialogContent>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} autoFocus>
+        <DialogActions className="text-center justify-content-center">
+          <Button
+            variant="outlined"
+            sx={{ textAlign: "center", fontFamily: "IRANSans" }}
+            onClick={handleClose}
+            autoFocus
+          >
             {buttonTitle}
           </Button>
         </DialogActions>
