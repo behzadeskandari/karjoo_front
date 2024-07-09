@@ -1,0 +1,8 @@
+.menu {
+    align-content: flex-end;
+    align-items: end;
+    align-self: start;
+    display: block;
+    text-align: right;
+    margin-left: 0;
+  }

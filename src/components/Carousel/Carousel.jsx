@@ -1,58 +1,174 @@
 import React from "react";
-import ReactCardSlider from "react-card-slider-component";
+import Slider from "react-slick";
+import { Box, IconButton } from "@mui/material";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-export default function Carousel() {
-  const sliderClick = (e) => {
-    console.log(e, "clickd slider");
+const Carousel = ({ items }) => {
+  const sliderRef = React.useRef(null);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1200, // large desktops
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 992, // tablets and small desktops
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768, // mobile devices
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 576, // small mobile devices
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
-  const slides = [
-    {
-      image: "https://picsum.photos/200/300",
-      title: "This is a title",
-      description: "This is a description",
-      clickEvent: sliderClick,
-    },
-    {
-      image: "https://picsum.photos/600/500",
-      title: "This is a second title",
-      description: "This is a second description",
-      clickEvent: sliderClick,
-    },
-    {
-      image: "https://picsum.photos/700/600",
-      title: "This is a third title",
-      description: "This is a third description",
-      clickEvent: sliderClick,
-    },
-    {
-      image: "https://picsum.photos/500/400",
-      title: "This is a fourth title",
-      description: "This is a fourth description",
-      clickEvent: sliderClick,
-    },
-    {
-      image: "https://picsum.photos/200/300",
-      title: "This is a fifth title",
-      description: "This is a fifth description",
-      clickEvent: (e) => sliderClick(e),
-    },
-    {
-      image: "https://picsum.photos/800/700",
-      title: "This is a sixth title",
-      description: "This is a sixth description",
-      clickEvent: (e) => sliderClick(e),
-    },
-    {
-      image: "https://picsum.photos/300/400",
-      title: "This is a seventh title",
-      description: "This is a seventh description",
-      clickEvent: (e) => sliderClick(e),
-    },
-  ];
+
+  const handlePrev = () => {
+    sliderRef.current.slickPrev();
+  };
+
+  const handleNext = () => {
+    sliderRef.current.slickNext();
+  };
 
   return (
-    <div className="d-flex justify-content-center">
-      <ReactCardSlider slides={slides} />
-    </div>
+    <Box sx={{ position: "relative", width: "90%", margin: "auto" }}>
+      <Slider ref={sliderRef} {...settings}>
+        {items.map((item, index) => (
+          <Box key={index} sx={{ padding: 2 }}>
+            <Box
+              sx={{
+                backgroundColor: "white",
+                borderRadius: 2,
+                boxShadow: 1,
+                textAlign: "center",
+                padding: 2,
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "right" }}>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  style={{ maxWidth: "100%", height: "auto" }}
+                />
+              </div>
+              <h6 className="mt-4 mb-2 text-right">{item.title}</h6>
+              <p>{item.description}</p>
+              {item.clickEvent && (
+                <button className="custom__ButtonCard" onClick={item.clickEvent}>توضیحات بیشتر</button>
+              )}
+            </Box>
+          </Box>
+        ))}
+      </Slider>
+      <IconButton
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "-5%",
+          transform: "translateY(-50%)",
+        }}
+        onClick={handlePrev}
+      >
+        <ArrowBackIos />
+      </IconButton>
+      <IconButton
+        sx={{
+          position: "absolute",
+          top: "50%",
+          right: "-5%",
+          transform: "translateY(-50%)",
+        }}
+        onClick={handleNext}
+      >
+        <ArrowForwardIos />
+      </IconButton>
+    </Box>
   );
-}
+};
+
+export default Carousel;
+
+// export default function Carousel() {
+//   const clickEvent = () => {
+//     console.log("clickd slider");
+//   };
+//   const slides = [
+//     {
+//       image: logo,
+//       title: "This is a title",
+//       description: "This is a description",
+//       clickEvent: clickEvent,
+//     },
+//     {
+//       image: logo,
+//       title: "This is a second title",
+//       description: "This is a second description",
+//       clickEvent: clickEvent,
+//     },
+//     {
+//       image: logo,
+//       title: "This is a third title",
+//       description: (
+//         <span>
+//           {" "}
+//           <button>button</button>This is a third description
+//         </span>
+//       ),
+//       clickEvent: clickEvent,
+//     },
+//     {
+//       image: logo,
+//       title: "This is a fourth title",
+//       description: "This is a fourth description",
+//       clickEvent: clickEvent,
+//     },
+//     {
+//       image: logo,
+//       title: "This is a fifth title",
+//       description: "This is a fifth description",
+//       clickEvent: clickEvent,
+//     },
+//     {
+//       image: logo,
+//       title: "This is a sixth title",
+//       description: "This is a sixth description",
+//       clickEvent: clickEvent,
+//     },
+//     {
+//       image: logo,
+//       title: "This is a seventh title",
+//       description: "This is a seventh description",
+//       clickEvent: clickEvent,
+//     },
+//   ];
+
+//   return (
+//     //
+//     <div className="row">
+//       <div className="d-flex justify-content-center py-5">
+//         <ReactCardSlider slides={slides} />
+//       </div>
+//     </div>
+//   );
+// }
