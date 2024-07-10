@@ -1,0 +1,1 @@
+import{o as t,j as s}from"./index-Bn5WgwsL.js";import o from"./index-I7RBJrBG.js";function i(){return t(),s.jsxs("div",{children:[s.jsx("h1",{children:"Your MBTI Result"}),s.jsx(o,{steps:5})]})}export{i as default};

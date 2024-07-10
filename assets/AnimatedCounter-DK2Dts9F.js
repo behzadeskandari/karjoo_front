@@ -1,0 +1,1 @@
+import{r as e,j as l}from"./index-Bn5WgwsL.js";const f=e.forwardRef(({targetNumber:t},a)=>{const[o,c]=e.useState(0);return e.useEffect(()=>{const n=Math.ceil(t/100),r=setInterval(()=>{c(s=>s+n>=t?(clearInterval(r),t):s+n)},20);return()=>clearInterval(r)},[t]),l.jsx("span",{ref:a,className:"color-blue",children:o.toLocaleString()})});export{f as default};
