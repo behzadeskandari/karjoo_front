@@ -1,6 +1,7 @@
 import { Tab, Tabs } from "@mui/material";
 import React, { Fragment } from "react";
-import CustomModal from "../../components/Modal/index";
+// import CustomModal from "../../components/Modal/index";
+const CustomModal = React.lazy(() => import("../../components/Modal/index"));
 
 export default function JobsPage() {
   const [value, setValue] = React.useState(0);

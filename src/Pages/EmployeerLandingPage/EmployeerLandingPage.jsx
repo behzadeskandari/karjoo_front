@@ -1,18 +1,33 @@
 import { Box, Divider } from "@mui/material";
-import React, { Fragment, useEffect, useLayoutEffect, useState } from "react";
+import React, {
+  Fragment,
+  Suspense,
+  useEffect,
+  useLayoutEffect,
+  useState,
+  lazy,
+} from "react";
 import "./EmployeerLandingPage.css";
-import Carousel from "../../components/Carousel/Carousel";
+const Carousel = lazy(() => import("../../components/Carousel/Carousel"));
+const PriceCard = lazy(() => import("../../components/PriceCard"));
+const StepIndicator = lazy(() => import("../../components/StepIndicator"));
+const Footer = lazy(() => import("../MainPage/Footer/Footer"));
+const GiftCard = lazy(() => import("./GiftCard"));
+const CustomHeader = lazy(() => import("./CustomHeader"));
+const LandingPageDetailCard = lazy(() => import("./LandingPageDetailCard"));
+
+// import Carousel from "../../components/Carousel/Carousel";
+// import PriceCard from "../../components/PriceCard";
+// import StepIndicator from "../../components/StepIndicator";
+// import Footer from "../MainPage/Footer/Footer";
+// import GiftCard from "./GiftCard";
+// import CustomHeader from "./CustomHeader";
+// import LandingPageDetailCard from "./LandingPageDetailCard";
 import logo from "../../assets/images/1.jpg";
 import { debounce } from "../../utility";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import PriceCard from "../../components/PriceCard";
-import StepIndicator from "../../components/StepIndicator";
-
-import Footer from "../MainPage/Footer/Footer";
-import GiftCard from "./GiftCard";
-import CustomHeader from "./CustomHeader";
-import LandingPageDetailCard from "./LandingPageDetailCard";
 import { useIsDesktop } from "../../hooks/useIsDesktop";
+import Loader from "../../components/Loader/Loader";
 
 export default function EmployeerLandingPage() {
   const isDesktop = useIsDesktop();
@@ -190,49 +205,51 @@ export default function EmployeerLandingPage() {
   return (
     //container
     <Fragment>
-      <div className="container">
-        <div className="row">
-          <div className="col-12 col-md-12">
-            <div className="col-12 col-md-12 text-right text-secondary mt-7">
-              <h3>کار را به کاردان بسپارید جذب نیرو توسط کارجو</h3>
-              <h4>کارجو همراه شما در جذب حرفه ای ترین نیروها </h4>
+      <Suspense fallback={<Loader />}>
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-12">
+              <div className="col-12 col-md-12 text-right text-secondary mt-7">
+                <h3>کار را به کاردان بسپارید جذب نیرو توسط کارجو</h3>
+                <h4>کارجو همراه شما در جذب حرفه ای ترین نیروها </h4>
+              </div>
+              <div className="col-md-4 col-4"></div>
+              <div className="col-md-4 col-4">
+                <span className="btnHolder">
+                  <button
+                    className="custom__ButtonCard"
+                    onClick={() => console.log("testonebutton")}
+                  >
+                    ثبت آگهی
+                  </button>
+                </span>
+              </div>
+              <div className="col-md-4 col-4"></div>
             </div>
-            <div className="col-md-4 col-4"></div>
-            <div className="col-md-4 col-4">
-              <span className="btnHolder">
-                <button
-                  className="custom__ButtonCard"
-                  onClick={() => console.log("testonebutton")}
-                >
-                  ثبت آگهی
-                </button>
+            <div className="col-12 col-md-12 text-center text-secondary fs-3 mt-4 d-flex flex-column">
+              <span>کارجو ، مورد اعتماد بهترین سازمان ها</span>
+              <span className="mt-3">
+                <Carousel items={items} />
               </span>
             </div>
-            <div className="col-md-4 col-4"></div>
-          </div>
-          <div className="col-12 col-md-12 text-center text-secondary fs-3 mt-4 d-flex flex-column">
-            <span>کارجو ، مورد اعتماد بهترین سازمان ها</span>
-            <span className="mt-3">
-              <Carousel items={items} />
-            </span>
           </div>
         </div>
-      </div>
 
-      <Divider variant="middle" component="section" />
-      <Box>
-        <LandingPageDetailCard isDesktop={isDesktop} />
-      </Box>
-      <Box className="d-flex flex-row justify-content-center customBox-prices padd-0">
-        <CustomHeader />
-      </Box>
-      <Box className="padd-0">
-        <PriceCard />
-      </Box>
-      <Box className="padd-0">
-        <GiftCard />
-      </Box>
-      <Footer isDesktop={isDesktop} logo={logo}></Footer>
+        <Divider variant="middle" component="section" />
+        <Box>
+          <LandingPageDetailCard isDesktop={isDesktop} />
+        </Box>
+        <Box className="d-flex flex-row justify-content-center customBox-prices padd-0">
+          <CustomHeader />
+        </Box>
+        <Box className="padd-0">
+          <PriceCard />
+        </Box>
+        <Box className="padd-0">
+          <GiftCard />
+        </Box>
+        <Footer isDesktop={isDesktop} logo={logo}></Footer>
+      </Suspense>
     </Fragment>
   );
 }

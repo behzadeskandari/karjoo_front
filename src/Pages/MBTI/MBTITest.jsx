@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Stepper from "../../components/Stepper/Stepper";
+// import Stepper from "../../components/Stepper/Stepper";
 import "../../components/Stepper/Stepper.css";
+const Stepper = lazy(() => import("../../components/Stepper/Stepper"));
+
 import axios from "axios";
 import Dexie from "dexie";
+import Loader from "../../components/Loader/Loader";
 
 const db = new Dexie("MBTITestDB");
 db.version(1).stores({
@@ -96,15 +99,17 @@ export default function MBTITest() {
 
   return (
     <div className="d-flex justify-content-center">
-      <Stepper
-        ComponentList={questionComponents}
-        ComponentLength={questionComponents.length}
-        handleSubmit={handleSubmit}
-        currentStep={currentStep}
-        setStep={setCurrentStep}
-        timeLeft={timeLeft}
-        setTimeLeft={setTimeLeft}
-      />
+      <Suspense fallback={<Loader />}>
+        <Stepper
+          ComponentList={questionComponents}
+          ComponentLength={questionComponents.length}
+          handleSubmit={handleSubmit}
+          currentStep={currentStep}
+          setStep={setCurrentStep}
+          timeLeft={timeLeft}
+          setTimeLeft={setTimeLeft}
+        />
+      </Suspense>
     </div>
   );
 }

@@ -1,11 +1,22 @@
 import { Box } from "@mui/material";
-import React, { Fragment, useEffect, useLayoutEffect, useState } from "react";
-import Footer from "../../MainPage/Footer/Footer";
+import React, {
+  Suspense,
+  Fragment,
+  lazy,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from "react";
+// import Footer from "../../MainPage/Footer/Footer";
 import logo from "../../../assets/images/1.jpg";
+const Footer = lazy(() => import("../../MainPage/Footer/Footer"));
+// const logo = lazy(() => import("../../../assets/images/1.jpg"));
+
 import { useIsDesktop } from "../../../hooks/useIsDesktop";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 // import { Container } from './styles';
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Loader from "../../../components/Loader/Loader";
 function ProfileEntryForm() {
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1);
@@ -26,33 +37,35 @@ function ProfileEntryForm() {
 
   const isDesktop = useIsDesktop();
   return (
-    <Box>
-      <TransitionGroup>
-        <CSSTransition key={step} timeout={300} classNames="step">
-          {/* Create a terynary condition based on step  */}
-          {/* {step === 1 ? <StepOneProfileEntry /> : <StepTwoProfileEntry /> : <StepThreeProfileEntry/>} */}
-          <>
-            {step === 1 ? (
-              <>
-                <ArrowBackIcon onClick={handlePrevStep} />
-                <StepOneProfileEntry onNextStep={handleNextStep} />
-              </>
-            ) : step === 2 ? (
-              <>
-                <ArrowBackIcon onClick={handlePrevStep} />
-                <StepTwoProfileEntry onNextStep={handleNextStep} />
-              </>
-            ) : (
-              <>
-                <ArrowBackIcon onClick={handlePrevStep} />
-                <StepThreeProfileEntry />
-              </>
-            )}
-            <Footer isDesktop={isDesktop} logo={logo} />
-          </>
-        </CSSTransition>
-      </TransitionGroup>
-    </Box>
+    <Suspense fallback={<Loader />}>
+      <Box>
+        <TransitionGroup>
+          <CSSTransition key={step} timeout={300} classNames="step">
+            {/* Create a terynary condition based on step  */}
+            {/* {step === 1 ? <StepOneProfileEntry /> : <StepTwoProfileEntry /> : <StepThreeProfileEntry/>} */}
+            <>
+              {step === 1 ? (
+                <>
+                  <ArrowBackIcon onClick={handlePrevStep} />
+                  <StepOneProfileEntry onNextStep={handleNextStep} />
+                </>
+              ) : step === 2 ? (
+                <>
+                  <ArrowBackIcon onClick={handlePrevStep} />
+                  <StepTwoProfileEntry onNextStep={handleNextStep} />
+                </>
+              ) : (
+                <>
+                  <ArrowBackIcon onClick={handlePrevStep} />
+                  <StepThreeProfileEntry />
+                </>
+              )}
+              <Footer isDesktop={isDesktop} logo={logo} />
+            </>
+          </CSSTransition>
+        </TransitionGroup>
+      </Box>
+    </Suspense>
   );
 }
 

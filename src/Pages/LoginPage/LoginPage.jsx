@@ -1,12 +1,12 @@
 // LoginPage.js
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { Suspense, useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import login from "../../actions/LoginAction/LoginAction";
 import "./LoginPage.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import Loader from "../../components/Loader/Loader";
 import { debounce } from "../../utility/index";
+import Loader from "../../components/Loader/Loader";
 const LoginPage = () => {
   //region Dispatch
   const dispatch = useDispatch();
@@ -98,28 +98,30 @@ const LoginPage = () => {
       {/* {loading ? (
         <Loader />
       ) : ( */}
-      <TransitionGroup>
-        <CSSTransition key={step} timeout={300} classNames="step">
-          {step === 1 ? (
-            <LoginSectionStepOne
-              isDesktop={isDesktop}
-              phoneNumber={phoneNumber}
-              onPhoneNumberChange={handlePhoneNumberChange}
-              onNextStep={handleNextStep}
-            />
-          ) : (
-            <>
-              <ArrowBackIcon onClick={handlePrevStep} />
-              <LoginSectionStepTwo
+      <Suspense fallback={<Loader />}>
+        <TransitionGroup>
+          <CSSTransition key={step} timeout={300} classNames="step">
+            {step === 1 ? (
+              <LoginSectionStepOne
                 isDesktop={isDesktop}
                 phoneNumber={phoneNumber}
-                password={password}
-                onPasswordChange={handlePasswordChange}
+                onPhoneNumberChange={handlePhoneNumberChange}
+                onNextStep={handleNextStep}
               />
-            </>
-          )}
-        </CSSTransition>
-      </TransitionGroup>
+            ) : (
+              <>
+                <ArrowBackIcon onClick={handlePrevStep} />
+                <LoginSectionStepTwo
+                  isDesktop={isDesktop}
+                  phoneNumber={phoneNumber}
+                  password={password}
+                  onPasswordChange={handlePasswordChange}
+                />
+              </>
+            )}
+          </CSSTransition>
+        </TransitionGroup>
+      </Suspense>
       {/* )} */}
     </div>
   );

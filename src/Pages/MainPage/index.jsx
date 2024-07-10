@@ -1,35 +1,58 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import { getRandomColor } from "../../components/RandomColor/index";
-
+import React, {
+  Suspense,
+  lazy,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+// import { getRandomColor } from "../../components/RandomColor/index";
+// import Carousel from "../../components/Carousel/Carousel";
+// import { JobCategoryOptions } from "../../Pages/MainPage/DropDown/JobCategory";
+// import { TechnicalOptions } from "../../Pages/MainPage/DropDown/TechnicalCategory";
+// import AnimatedCounter from "../../Pages/MainPage/Counter/AnimatedCounter";
+// import AdvertismentCard from "../../components/Card/Card";
+import logo from "../../assets/images/1.jpg";
+// import Loader from "../../components/Loader/Loader";
+// import QuestionAnswerWhyUs from "./Footer/QuestionAnswerWhyUs";
+// import CustomSelect from "../../components/Select/CustomSelect";
+// import Footer from "./Constant/MainPage/Footer/Footer";
 import Select from "react-select";
-import Carousel from "../../components/Carousel/Carousel";
-import { JobCategoryOptions } from "../../Pages/MainPage/DropDown/JobCategory";
+const getRandomColor = lazy(() => import("../../components/RandomColor/index"));
+const Carousel = lazy(() => import("../../components/Carousel/Carousel"));
+const JobCategoryOptions = lazy(() =>
+  import("../../Pages/MainPage/DropDown/JobCategory")
+);
+const TechnicalOptions = lazy(() =>
+  import("../../Pages/MainPage/DropDown/TechnicalCategory")
+);
+const AnimatedCounter = lazy(() =>
+  import("../../Pages/MainPage/Counter/AnimatedCounter")
+);
+const AdvertismentCard = lazy(() => import("../../components/Card/Card"));
+//const logo = lazy(() => import("../../assets/images/1.jpg"));
+const Loader = lazy(() => import("../../components/Loader/Loader"));
+const QuestionAnswerWhyUs = lazy(() => import("./Footer/QuestionAnswerWhyUs"));
+const CustomSelect = lazy(() => import("../../components/Select/CustomSelect"));
+
 import {
   CityOptions,
   ProvinceOptions,
 } from "../../Pages/MainPage/DropDown/CityCategory";
-import { TechnicalOptions } from "../../Pages/MainPage/DropDown/TechnicalCategory";
 import {
   HeaderBanner,
   HeaderBannerCity,
   JobSeekingType,
 } from "../../Pages/MainPage/Text/index";
-import AnimatedCounter from "../../Pages/MainPage/Counter/AnimatedCounter";
-import AdvertismentCard from "../../components/Card/Card";
-import logo from "../../assets/images/1.jpg";
 import { Box, Button } from "@mui/material";
 import Footer from "./Footer/Footer";
-import Loader from "../../components/Loader/Loader";
-import QuestionAnswerWhyUs from "./Footer/QuestionAnswerWhyUs";
 import { useThemeToggle } from "../../wrapper/ThemeProviderWrapper";
-import CustomSelect from "../../components/Select/CustomSelect";
 
-// import Footer from "./Constant/MainPage/Footer/Footer";
 export default function HomePAGE() {
   const toggleTheme = useThemeToggle();
 
   // region refs
-  const textRefJobSeekingRef = React.useRef();
+  const textRefJobSeekingRef = useRef();
   const textRefHeaderBannerCityRef = React.useRef();
   const textRefHeaderBannerRef = React.useRef();
   const numberRefCounterResumeRef = React.useRef();
@@ -353,71 +376,77 @@ export default function HomePAGE() {
   //region return
   return (
     <>
-      <Box
-        bgcolor={"secondary.main"}
-        component="main"
-        sx={{
-          p: 1,
-          paddingBottom: "1.2em",
-          padding: "0px",
-        }}
-      >
-        <Box className="container" component={"div"}>
-          <div
-            style={{ paddingTop: "16px", textAlign: "right", height: "auto" }}
-          >
-            {/* header Text ANd Number */}
-            <h2>
-              <div className="HeaderBanner">
-                <span ref={textRefHeaderBannerRef}>{HeaderBanner}</span>
-                <span className="color-blue">
-                  <AnimatedCounter
-                    targetNumber={50507}
-                    ref={numberRefCounterResumeRef}
-                  />
-                </span>
-              </div>
-              <div className="HeaderBanner">
-                <span ref={textRefHeaderBannerCityRef}>{HeaderBannerCity}</span>
-                <span className="color-blue padd-text">
-                  <AnimatedCounter
-                    targetNumber={505}
-                    ref={numberRefCounterCityRef}
-                  />
-                </span>
-              </div>
-            </h2>
-            {/* ImageTAG Goes Here */}
-            <h3 className="margin-top-60 textholder" ref={textRefJobSeekingRef}>
-              {JobSeekingType}
-            </h3>
-            {/* header Text ANd Number */}
-
-            {/* MainDropDown */}
-            <Box className="row searchGrid " ref={SearchBoxBorderRef}>
-              <div
-                className={`${
-                  isDesktop == true
-                    ? "d-flex flex-row-reverse"
-                    : "d-flex flex-column height-20"
-                }  `}
+      <Suspense fallback={<Loader />}>
+        <Box
+          bgcolor={"secondary.main"}
+          component="main"
+          sx={{
+            p: 1,
+            paddingBottom: "1.2em",
+            padding: "0px",
+          }}
+        >
+          <Box className="container" component={"div"}>
+            <div
+              style={{ paddingTop: "16px", textAlign: "right", height: "auto" }}
+            >
+              {/* header Text ANd Number */}
+              <h2>
+                <div className="HeaderBanner">
+                  <span ref={textRefHeaderBannerRef}>{HeaderBanner}</span>
+                  <span className="color-blue">
+                    <AnimatedCounter
+                      targetNumber={50507}
+                      ref={numberRefCounterResumeRef}
+                    />
+                  </span>
+                </div>
+                <div className="HeaderBanner">
+                  <span ref={textRefHeaderBannerCityRef}>
+                    {HeaderBannerCity}
+                  </span>
+                  <span className="color-blue padd-text">
+                    <AnimatedCounter
+                      targetNumber={505}
+                      ref={numberRefCounterCityRef}
+                    />
+                  </span>
+                </div>
+              </h2>
+              {/* ImageTAG Goes Here */}
+              <h3
+                className="margin-top-60 textholder"
+                ref={textRefJobSeekingRef}
               >
+                {JobSeekingType}
+              </h3>
+              {/* header Text ANd Number */}
+
+              {/* MainDropDown */}
+              <Box className="row searchGrid " ref={SearchBoxBorderRef}>
                 <div
                   className={`${
-                    isDesktop
-                      ? "col-3 col-lg-3 col-md-3 col-sm-3 p-4 "
-                      : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
-                  }`}
+                    isDesktop == true
+                      ? "d-flex flex-row-reverse"
+                      : "d-flex flex-column height-20"
+                  }  `}
                 >
-                  <CustomSelect
-                    options={JobCategoryOptions}
-                    key={1}
-                    loadingMessage={() => "در حال لود"}
-                    noOptionsMessage={() => "موردی انتخاب نشده است"}
-                    tabIndex={2}
-                    placeholder={"گروه شغلی"}
-                  />
-                  {/* <Select
+                  <div
+                    className={`${
+                      isDesktop
+                        ? "col-3 col-lg-3 col-md-3 col-sm-3 p-4 "
+                        : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
+                    }`}
+                  >
+                    <CustomSelect
+                      options={JobCategoryOptions}
+                      key={1}
+                      loadingMessage={() => "در حال لود"}
+                      noOptionsMessage={() => "موردی انتخاب نشده است"}
+                      tabIndex={2}
+                      placeholder={"گروه شغلی"}
+                    />
+                    {/* <Select
                     loadingMessage={() => "در حال لود"}
                     noOptionsMessage={() => "موردی انتخاب نشده است"}
                     tabIndex={2}
@@ -435,23 +464,23 @@ export default function HomePAGE() {
                     options={JobCategoryOptions}
                     placeholder={"گروه شغلی"}
                   /> */}
-                </div>
-                <div
-                  className={`${
-                    isDesktop
-                      ? "col-3 col-lg-3 col-md-3 col-sm-3 p-4 "
-                      : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
-                  }`}
-                >
-                  <CustomSelect
-                    options={TechnicalOptions}
-                    key={2}
-                    loadingMessage={() => "در حال لود"}
-                    noOptionsMessage={() => "موردی انتخاب نشده است"}
-                    tabIndex={3}
-                    placeholder={"ارشدیت"}
-                  />
-                  {/* <Select
+                  </div>
+                  <div
+                    className={`${
+                      isDesktop
+                        ? "col-3 col-lg-3 col-md-3 col-sm-3 p-4 "
+                        : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
+                    }`}
+                  >
+                    <CustomSelect
+                      options={TechnicalOptions}
+                      key={2}
+                      loadingMessage={() => "در حال لود"}
+                      noOptionsMessage={() => "موردی انتخاب نشده است"}
+                      tabIndex={3}
+                      placeholder={"ارشدیت"}
+                    />
+                    {/* <Select
                     
                     loadingMessage={() => "در حال لود"}
                     noOptionsMessage={() => "موردی انتخاب نشده است"}
@@ -472,232 +501,233 @@ export default function HomePAGE() {
                     getOptionValue={(option) => option.value}
                     placeholder={"ارشدیت"}
                   /> */}
-                </div>
-                <div
-                  className={`${
-                    isDesktop
-                      ? "col-3 col-lg-3 col-md-3 col-sm-3 p-4 "
-                      : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
-                  }`}
-                >
-                  <Select
-                    styles={{
-                      control: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isFocused ? "#f0f0f0" : "#fff",
-                        borderColor: state.isFocused ? "#3f51b5" : "#ccc",
-                        boxShadow: state.isFocused
-                          ? "0 0 0 1px #3f51b5"
-                          : "none",
-                        "&:hover": {
-                          borderColor: state.isFocused ? "#3f51b5" : "#888",
-                        },
-                        fontSize: "13px",
-                      }),
-                      menu: (provided) => ({
-                        ...provided,
-                        zIndex: 9999,
-                        fontSize: "13px",
-                      }),
-                      option: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isSelected
-                          ? "#3f51b5"
-                          : state.isFocused
-                          ? "#f0f0f0"
-                          : "#fff",
-                        color: state.isSelected ? "#fff" : "#333",
-                        "&:active": {
+                  </div>
+                  <div
+                    className={`${
+                      isDesktop
+                        ? "col-3 col-lg-3 col-md-3 col-sm-3 p-4 "
+                        : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
+                    }`}
+                  >
+                    <Select
+                      styles={{
+                        control: (provided, state) => ({
+                          ...provided,
+                          backgroundColor: state.isFocused ? "#f0f0f0" : "#fff",
+                          borderColor: state.isFocused ? "#3f51b5" : "#ccc",
+                          boxShadow: state.isFocused
+                            ? "0 0 0 1px #3f51b5"
+                            : "none",
+                          "&:hover": {
+                            borderColor: state.isFocused ? "#3f51b5" : "#888",
+                          },
+                          fontSize: "13px",
+                        }),
+                        menu: (provided) => ({
+                          ...provided,
+                          zIndex: 9999,
+                          fontSize: "13px",
+                        }),
+                        option: (provided, state) => ({
+                          ...provided,
                           backgroundColor: state.isSelected
                             ? "#3f51b5"
-                            : "#f0f0f0",
-                        },
-                        fontSize: "13px",
-                      }),
-                      placeholder: (provided) => ({
-                        ...provided,
-                        color: "#888",
-                        fontStyle: "italic",
-                        fontSize: "13px",
-                      }),
-                      singleValue: (provided) => ({
-                        ...provided,
-                        color: "#333",
-                        fontSize: "13px",
-                      }),
-                      multiValue: (provided) => ({
-                        ...provided,
-                        backgroundColor: "#e0e0e0",
-                        fontSize: "13px",
-                      }),
-                      multiValueLabel: (provided) => ({
-                        ...provided,
-                        color: "#333",
-                        fontSize: "13px",
-                      }),
-                      multiValueRemove: (provided) => ({
-                        ...provided,
-                        color: "#888",
-                        "&:hover": {
-                          backgroundColor: "#d32f2f",
-                          color: "#fff",
-                        },
-                        fontSize: "13px",
-                      }),
-                    }}
-                    loadingMessage={() => "در حال لود"}
-                    noOptionsMessage={() => "موردی انتخاب نشده است"}
-                    tabIndex={3}
+                            : state.isFocused
+                            ? "#f0f0f0"
+                            : "#fff",
+                          color: state.isSelected ? "#fff" : "#333",
+                          "&:active": {
+                            backgroundColor: state.isSelected
+                              ? "#3f51b5"
+                              : "#f0f0f0",
+                          },
+                          fontSize: "13px",
+                        }),
+                        placeholder: (provided) => ({
+                          ...provided,
+                          color: "#888",
+                          fontStyle: "italic",
+                          fontSize: "13px",
+                        }),
+                        singleValue: (provided) => ({
+                          ...provided,
+                          color: "#333",
+                          fontSize: "13px",
+                        }),
+                        multiValue: (provided) => ({
+                          ...provided,
+                          backgroundColor: "#e0e0e0",
+                          fontSize: "13px",
+                        }),
+                        multiValueLabel: (provided) => ({
+                          ...provided,
+                          color: "#333",
+                          fontSize: "13px",
+                        }),
+                        multiValueRemove: (provided) => ({
+                          ...provided,
+                          color: "#888",
+                          "&:hover": {
+                            backgroundColor: "#d32f2f",
+                            color: "#fff",
+                          },
+                          fontSize: "13px",
+                        }),
+                      }}
+                      loadingMessage={() => "در حال لود"}
+                      noOptionsMessage={() => "موردی انتخاب نشده است"}
+                      tabIndex={3}
+                      className={`${
+                        isDesktop ? "p-4" : ""
+                      }basic-single margin-top-60 `}
+                      classNamePrefix="select"
+                      //defaultValue={CityOptions[0]}
+                      isDisabled={isDisabled}
+                      isLoading={isLoading}
+                      isClearable={true}
+                      isRtl={isRtl}
+                      isSearchable={isSearchable}
+                      name="City"
+                      onChange={(e) => handleProvinceChange(e)}
+                      options={CityOptions}
+                      getOptionLabel={(option) => option.label}
+                      getOptionValue={(option) => option.value}
+                      placeholder={"استان"}
+                    />
+                  </div>
+                  <div
                     className={`${
-                      isDesktop ? "p-4" : ""
-                    }basic-single margin-top-60 `}
-                    classNamePrefix="select"
-                    //defaultValue={CityOptions[0]}
-                    isDisabled={isDisabled}
-                    isLoading={isLoading}
-                    isClearable={true}
-                    isRtl={isRtl}
-                    isSearchable={isSearchable}
-                    name="City"
-                    onChange={(e) => handleProvinceChange(e)}
-                    options={CityOptions}
-                    getOptionLabel={(option) => option.label}
-                    getOptionValue={(option) => option.value}
-                    placeholder={"استان"}
-                  />
-                </div>
-                <div
-                  className={`${
-                    isDesktop
-                      ? "col-3 col-lg-3 col-md-3 col-sm-3 p-4  "
-                      : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
-                  }`}
-                >
-                  <Select
-                    styles={{
-                      control: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isFocused ? "#f0f0f0" : "#fff",
-                        borderColor: state.isFocused ? "#3f51b5" : "#ccc",
-                        boxShadow: state.isFocused
-                          ? "0 0 0 1px #3f51b5"
-                          : "none",
-                        "&:hover": {
-                          borderColor: state.isFocused ? "#3f51b5" : "#888",
-                        },
-                      }),
-                      menu: (provided) => ({
-                        ...provided,
-                        zIndex: 9999,
-                        fontSize: "13px",
-                      }),
-                      option: (provided, state) => ({
-                        ...provided,
-                        backgroundColor: state.isSelected
-                          ? "#3f51b5"
-                          : state.isFocused
-                          ? "#f0f0f0"
-                          : "#fff",
-                        color: state.isSelected ? "#fff" : "#333",
-                        "&:active": {
+                      isDesktop
+                        ? "col-3 col-lg-3 col-md-3 col-sm-3 p-4  "
+                        : "col-12 col-lg-12 col-md-12 col-sm-12 margin-2"
+                    }`}
+                  >
+                    <Select
+                      styles={{
+                        control: (provided, state) => ({
+                          ...provided,
+                          backgroundColor: state.isFocused ? "#f0f0f0" : "#fff",
+                          borderColor: state.isFocused ? "#3f51b5" : "#ccc",
+                          boxShadow: state.isFocused
+                            ? "0 0 0 1px #3f51b5"
+                            : "none",
+                          "&:hover": {
+                            borderColor: state.isFocused ? "#3f51b5" : "#888",
+                          },
+                        }),
+                        menu: (provided) => ({
+                          ...provided,
+                          zIndex: 9999,
+                          fontSize: "13px",
+                        }),
+                        option: (provided, state) => ({
+                          ...provided,
                           backgroundColor: state.isSelected
                             ? "#3f51b5"
-                            : "#f0f0f0",
-                        },
-                        fontSize: "13px",
-                      }),
-                      placeholder: (provided) => ({
-                        ...provided,
-                        color: "#888",
-                        fontStyle: "italic",
-                        fontSize: "13px",
-                      }),
-                      singleValue: (provided) => ({
-                        ...provided,
-                        color: "#333",
-                        fontSize: "13px",
-                      }),
-                      multiValue: (provided) => ({
-                        ...provided,
-                        backgroundColor: "#e0e0e0",
-                        fontSize: "13px",
-                      }),
-                      multiValueLabel: (provided) => ({
-                        ...provided,
-                        color: "#333",
-                        fontSize: "13px",
-                      }),
-                      multiValueRemove: (provided) => ({
-                        ...provided,
-                        color: "#888",
-                        "&:hover": {
-                          backgroundColor: "#d32f2f",
-                          color: "#fff",
-                        },
-                        fontSize: "13px",
-                      }),
-                    }}
-                    loadingMessage={() => "در حال لود"}
-                    noOptionsMessage={() => "موردی انتخاب نشده است"}
-                    tabIndex={4}
-                    className={`${
-                      isDesktop ? "p-4" : ""
-                    }basic-single margin-top-60 `}
-                    classNamePrefix="select"
-                    //defaultValue={CityOptions[0]}
-                    isDisabled={isDisabled}
-                    isLoading={isLoading}
-                    isClearable={true}
-                    isRtl={isRtl}
-                    isSearchable={isSearchable}
-                    name="Province"
-                    value={selectedProvince}
-                    onChange={handleCityChange}
-                    options={cityOptions}
-                    getOptionLabel={(option) => option.label}
-                    getOptionValue={(option) => option.value}
-                    placeholder={"شهر"}
-                  />
+                            : state.isFocused
+                            ? "#f0f0f0"
+                            : "#fff",
+                          color: state.isSelected ? "#fff" : "#333",
+                          "&:active": {
+                            backgroundColor: state.isSelected
+                              ? "#3f51b5"
+                              : "#f0f0f0",
+                          },
+                          fontSize: "13px",
+                        }),
+                        placeholder: (provided) => ({
+                          ...provided,
+                          color: "#888",
+                          fontStyle: "italic",
+                          fontSize: "13px",
+                        }),
+                        singleValue: (provided) => ({
+                          ...provided,
+                          color: "#333",
+                          fontSize: "13px",
+                        }),
+                        multiValue: (provided) => ({
+                          ...provided,
+                          backgroundColor: "#e0e0e0",
+                          fontSize: "13px",
+                        }),
+                        multiValueLabel: (provided) => ({
+                          ...provided,
+                          color: "#333",
+                          fontSize: "13px",
+                        }),
+                        multiValueRemove: (provided) => ({
+                          ...provided,
+                          color: "#888",
+                          "&:hover": {
+                            backgroundColor: "#d32f2f",
+                            color: "#fff",
+                          },
+                          fontSize: "13px",
+                        }),
+                      }}
+                      loadingMessage={() => "در حال لود"}
+                      noOptionsMessage={() => "موردی انتخاب نشده است"}
+                      tabIndex={4}
+                      className={`${
+                        isDesktop ? "p-4" : ""
+                      }basic-single margin-top-60 `}
+                      classNamePrefix="select"
+                      //defaultValue={CityOptions[0]}
+                      isDisabled={isDisabled}
+                      isLoading={isLoading}
+                      isClearable={true}
+                      isRtl={isRtl}
+                      isSearchable={isSearchable}
+                      name="Province"
+                      value={selectedProvince}
+                      onChange={handleCityChange}
+                      options={cityOptions}
+                      getOptionLabel={(option) => option.label}
+                      getOptionValue={(option) => option.value}
+                      placeholder={"شهر"}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-12 col-12 d-flex justify-content-center mt-2 mb-4">
-                <button className="custom__ButtonCard">جستجو آگهی</button>
-              </div>
-            </Box>
+                <div className="col-md-12 col-12 d-flex justify-content-center mt-2 mb-4">
+                  <button className="custom__ButtonCard">جستجو آگهی</button>
+                </div>
+              </Box>
 
-            {/* ADVERTISMENT CARDS */}
-            <Box
-              bgcolor={"secondary.main"}
-              className="row boxShadow  grid-container  py-4 m-t-5"
-            >
-              <AdvertismentCard />
-              <AdvertismentCard />
-              <AdvertismentCard />
-              <AdvertismentCard />
-              <AdvertismentCard />
-              <AdvertismentCard />
-              <AdvertismentCard />
-              <AdvertismentCard />
-            </Box>
-            <Box className="row Extra_add mt-4 mb-4">
-              <Button className="btnExtraAdd">مشاهده آگهی بیشتر</Button>
-            </Box>
-            <Carousel items={items} />
-            <Box className="row">
-              {questionsAnswers.map((qa, index) => (
-                <QuestionAnswerWhyUs
-                  isDesktop={isDesktop}
-                  key={index}
-                  index={index + 1}
-                  question={qa.question}
-                  answer={qa.answer}
-                />
-              ))}
-            </Box>
-          </div>
-        </Box>
-      </Box>{" "}
-      <Footer isDesktop={isDesktop} logo={logo} />
+              {/* ADVERTISMENT CARDS */}
+              <Box
+                bgcolor={"secondary.main"}
+                className="row boxShadow  grid-container  py-4 m-t-5"
+              >
+                <AdvertismentCard />
+                <AdvertismentCard />
+                <AdvertismentCard />
+                <AdvertismentCard />
+                <AdvertismentCard />
+                <AdvertismentCard />
+                <AdvertismentCard />
+                <AdvertismentCard />
+              </Box>
+              <Box className="row Extra_add mt-4 mb-4">
+                <Button className="btnExtraAdd">مشاهده آگهی بیشتر</Button>
+              </Box>
+              <Carousel items={items} />
+              <Box className="row">
+                {questionsAnswers.map((qa, index) => (
+                  <QuestionAnswerWhyUs
+                    isDesktop={isDesktop}
+                    key={index}
+                    index={index + 1}
+                    question={qa.question}
+                    answer={qa.answer}
+                  />
+                ))}
+              </Box>
+            </div>
+          </Box>
+        </Box>{" "}
+        <Footer isDesktop={isDesktop} logo={logo} />
+      </Suspense>
     </>
   );
 }

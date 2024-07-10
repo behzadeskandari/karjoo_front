@@ -1,9 +1,10 @@
 // SignUpPage.js
-import React, { useLayoutEffect, useState, useEffect } from "react";
+import React, { useLayoutEffect, useState, useEffect, Suspense } from "react";
 import { debounce } from "../../utility/index";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Loader from "../../components/Loader/Loader";
+import "./SignUpPage.css";
 const SignUpPage = () => {
   const [step, setStep] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -85,28 +86,31 @@ const SignUpPage = () => {
       {/* {loading ? (
         <Loader />
       ) : ( */}
-      <TransitionGroup>
-        <CSSTransition key={step} timeout={300} classNames="step">
-          {step === 1 ? (
-            <LoginSectionStepOne
-              isDesktop={isDesktop}
-              phoneNumber={phoneNumber}
-              onPhoneNumberChange={handlePhoneNumberChange}
-              onNextStep={handleNextStep}
-            />
-          ) : (
-            <>
-              <ArrowBackIcon onClick={handlePrevStep} />
-              <LoginSectionStepTwo
+      <Suspense fallback={<Loader />}>
+        <TransitionGroup>
+          <CSSTransition key={step} timeout={300} classNames="step">
+            {step === 1 ? (
+              <LoginSectionStepOne
                 isDesktop={isDesktop}
                 phoneNumber={phoneNumber}
-                password={password}
-                onPasswordChange={handlePasswordChange}
+                onPhoneNumberChange={handlePhoneNumberChange}
+                onNextStep={handleNextStep}
               />
-            </>
-          )}
-        </CSSTransition>
-      </TransitionGroup>
+            ) : (
+              <>
+                <ArrowBackIcon onClick={handlePrevStep} />
+                <LoginSectionStepTwo
+                  isDesktop={isDesktop}
+                  phoneNumber={phoneNumber}
+                  password={password}
+                  onPasswordChange={handlePasswordChange}
+                />
+              </>
+            )}
+          </CSSTransition>
+        </TransitionGroup>
+      </Suspense>
+
       {/* )} */}
     </div>
   );

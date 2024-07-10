@@ -11,7 +11,7 @@
     "start": "vite -- --host",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -r https://github.com/behzadeskandari/karjoo_front.git"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
