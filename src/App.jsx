@@ -38,6 +38,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Loader from "./components/Loader/Loader";
 import ErrorBoundary from "./components/Error/ErrorBoundary";
+import CustomSlider from "./components/Slider/CustomSlider";
 // import { Container, Form } from "react-bootstrap";
 // import HeaderAndNavigationMenu from "./components/Menu/HeaderAndNavigationMenu";
 // import NoutFound from "./Pages/NotFound/NoutFound";
@@ -49,6 +50,10 @@ import ErrorBoundary from "./components/Error/ErrorBoundary";
 // import JobsPage from "./Pages/JobsPage";
 // import AdvertismentAddPage from "./Pages/AdvertismentAddPage/AdvertismentAddPage";
 
+import img1 from "./assets/images/img/1.jpg";
+import img2 from "./assets/images/img/2.jpg";
+import img3 from "./assets/images/img/3.jpg";
+import Piano from "./components/Piano/Piano";
 function App() {
   //region return
   const steps = [
@@ -57,6 +62,7 @@ function App() {
     { id: 3, value: "step3" },
     { id: 4, value: "step4" },
   ];
+
   return (
     <>
       {/* <CssBaseline enableColorSchem={false} />*/}
@@ -64,6 +70,7 @@ function App() {
         <ErrorBoundary>
           <Router>
             <HeaderAndNavigationMenu />
+            <Piano />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
@@ -76,7 +83,11 @@ function App() {
               {/* the Test Route That Has TO Move To After Login */}
               <Route path="/profilePage" element={<ProfileEntryForm />} />
               <Route path="/employerPage" element={<EmployeerLandingPage />} />
-              <Route path="/step" element={<StepIndicator steps={steps} />} />
+              {/* <Route path="/step" element={<StepIndicator steps={steps} />} /> */}
+              <Route
+                path="/step"
+                element={<CustomSlider images={[img1, img2, img3]} />}
+              />
               <Route path="/JobPage" element={<JobsPage />} />
               <Route
                 path="/AdvertismentAdd"
