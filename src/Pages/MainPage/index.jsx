@@ -6,19 +6,20 @@ import React, {
   useRef,
   useState,
 } from "react";
-// import { getRandomColor } from "../../components/RandomColor/index";
+import { getRandomColor } from "../../components/RandomColor/index";
 // import Carousel from "../../components/Carousel/Carousel";
 // import { JobCategoryOptions } from "../../Pages/MainPage/DropDown/JobCategory";
 // import { TechnicalOptions } from "../../Pages/MainPage/DropDown/TechnicalCategory";
 // import AnimatedCounter from "../../Pages/MainPage/Counter/AnimatedCounter";
 // import AdvertismentCard from "../../components/Card/Card";
 import logo from "../../assets/images/1.jpg";
+import target from "../../assets/images/target.png";
 // import Loader from "../../components/Loader/Loader";
 // import QuestionAnswerWhyUs from "./Footer/QuestionAnswerWhyUs";
 // import CustomSelect from "../../components/Select/CustomSelect";
 // import Footer from "./Constant/MainPage/Footer/Footer";
 import Select from "react-select";
-const getRandomColor = lazy(() => import("../../components/RandomColor/index"));
+// const getRandomColor = lazy(() => import("../../components/RandomColor/index"));
 const Carousel = lazy(() => import("../../components/Carousel/Carousel"));
 const JobCategoryOptions = lazy(() =>
   import("../../Pages/MainPage/DropDown/JobCategory")
@@ -40,6 +41,7 @@ import {
   ProvinceOptions,
 } from "../../Pages/MainPage/DropDown/CityCategory";
 import {
+  FindYouRJob,
   HeaderBanner,
   HeaderBannerCity,
   JobSeekingType,
@@ -49,10 +51,10 @@ import Footer from "./Footer/Footer";
 import { useThemeToggle } from "../../wrapper/ThemeProviderWrapper";
 
 export default function HomePAGE() {
-  const toggleTheme = useThemeToggle();
-
+  const [toggleTheme, isDarkMode] = useThemeToggle();
   // region refs
   const textRefJobSeekingRef = useRef();
+  const findYouRJobRef = useRef();
   const textRefHeaderBannerCityRef = React.useRef();
   const textRefHeaderBannerRef = React.useRef();
   const numberRefCounterResumeRef = React.useRef();
@@ -103,8 +105,21 @@ export default function HomePAGE() {
     }
     window.addEventListener("resize", debouncedHandleResize);
 
+    const intervalId = setInterval(() => {
+      SetColor(
+        textRefJobSeekingRef,
+        textRefHeaderBannerCityRef,
+        textRefHeaderBannerRef,
+        numberRefCounterResumeRef,
+        numberRefCounterCityRef,
+        SearchBoxBorderRef,
+        findYouRJobRef
+      );
+    }, 1000);
+
     return (_) => {
       window.removeEventListener("resize", debouncedHandleResize);
+      clearInterval(intervalId);
     };
   }, []);
 
@@ -130,22 +145,7 @@ export default function HomePAGE() {
     };
   }, [isDesktop, dimensions]);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      SetColor(
-        textRefJobSeekingRef,
-        textRefHeaderBannerCityRef,
-        textRefHeaderBannerRef,
-        numberRefCounterResumeRef,
-        numberRefCounterCityRef,
-        SearchBoxBorderRef
-      );
-    }, 2000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+  useEffect(() => {}, []);
 
   //Effects
   //region Arrays
@@ -159,7 +159,8 @@ export default function HomePAGE() {
     textRefHeaderBanner,
     numberRefCounterResume,
     numberRefCounterCity,
-    SearchBoxBorderRef
+    SearchBoxBorderRef,
+    findYouRJobRef
   ) {
     const color = getRandomColor(1);
     if (textRefJobSeeking.current) {
@@ -188,6 +189,11 @@ export default function HomePAGE() {
     if (SearchBoxBorderRef.current) {
       SearchBoxBorderRef.current.style.border = `2px solid ${colorsBorder}`;
       SearchBoxBorderRef.current.style.transition = "4s";
+    }
+    const RandomColor3 = getRandomColor(3);
+    if (findYouRJobRef.current) {
+      findYouRJobRef.current.style.color = RandomColor3;
+      findYouRJobRef.current.style.transition = "4s";
     }
   }
 
@@ -369,7 +375,7 @@ export default function HomePAGE() {
       answer: "جواب سوم",
     },
   ];
-  //region return
+  //region returnf
   if (!isWidthDetected) {
     return <Loader />;
   }
@@ -378,7 +384,7 @@ export default function HomePAGE() {
     <>
       <Suspense fallback={<Loader />}>
         <Box
-          bgcolor={"secondary.main"}
+          bgcolor={"secondary.grey"}
           component="main"
           sx={{
             p: 1,
@@ -391,39 +397,67 @@ export default function HomePAGE() {
               style={{ paddingTop: "16px", textAlign: "right", height: "auto" }}
             >
               {/* header Text ANd Number */}
-              <h2>
-                <div className="HeaderBanner">
-                  <span ref={textRefHeaderBannerRef}>{HeaderBanner}</span>
-                  <span className="color-blue">
-                    <AnimatedCounter
-                      targetNumber={50507}
-                      ref={numberRefCounterResumeRef}
-                    />
-                  </span>
+              <div className="col-12 col-md-12 d-flex">
+                <div className="col-6 col-md-6">
+                  <h3
+                    className="margin-top-60 textholder text-left d-inline-block float-right"
+                    ref={findYouRJobRef}
+                  >
+                    <span
+                      style={{
+                        display: "flex",
+                        textAlign: "right",
+                        alignItems: "end",
+                      }}
+                    >
+                      <img src={target} alt="target" className="img-position" />
+                      {FindYouRJob}
+                    </span>
+                  </h3>
                 </div>
-                <div className="HeaderBanner">
-                  <span ref={textRefHeaderBannerCityRef}>
-                    {HeaderBannerCity}
-                  </span>
-                  <span className="color-blue padd-text">
-                    <AnimatedCounter
-                      targetNumber={505}
-                      ref={numberRefCounterCityRef}
-                    />
-                  </span>
+                <div className="col-6 col-md-6">
+                  <h2 className=" d-block">
+                    <div className="HeaderBanner">
+                      <span ref={textRefHeaderBannerRef}>{HeaderBanner}</span>
+                      <span className="color-blue">
+                        <AnimatedCounter
+                          targetNumber={50507}
+                          ref={numberRefCounterResumeRef}
+                        />
+                      </span>
+                    </div>
+                    <div className="HeaderBanner">
+                      <span ref={textRefHeaderBannerCityRef}>
+                        {HeaderBannerCity}
+                      </span>
+                      <span className="color-blue padd-text">
+                        <AnimatedCounter
+                          targetNumber={505}
+                          ref={numberRefCounterCityRef}
+                        />
+                      </span>
+                    </div>
+                  </h2>
+                  {/* ImageTAG Goes Here */}
+                  <h3
+                    className="margin-top-60 textholder  d-inline-block float-right"
+                    ref={textRefJobSeekingRef}
+                  >
+                    {JobSeekingType}
+                  </h3>
                 </div>
-              </h2>
-              {/* ImageTAG Goes Here */}
-              <h3
-                className="margin-top-60 textholder"
-                ref={textRefJobSeekingRef}
-              >
-                {JobSeekingType}
-              </h3>
+              </div>
+
               {/* header Text ANd Number */}
 
               {/* MainDropDown */}
-              <Box className="row searchGrid " ref={SearchBoxBorderRef}>
+              <Box
+                className="row searchGrid "
+                sx={{
+                  color: "primary.grey",
+                }}
+                ref={SearchBoxBorderRef}
+              >
                 <div
                   className={`${
                     isDesktop == true
@@ -696,7 +730,7 @@ export default function HomePAGE() {
 
               {/* ADVERTISMENT CARDS */}
               <Box
-                bgcolor={"secondary.main"}
+                bgcolor={`${isDarkMode ? "secondary.test" : "secondary.grey"}`}
                 className="row boxShadow  grid-container  py-4 m-t-5"
               >
                 <AdvertismentCard />

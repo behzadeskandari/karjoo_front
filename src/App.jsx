@@ -53,7 +53,6 @@ import CustomSlider from "./components/Slider/CustomSlider";
 import img1 from "./assets/images/img/1.jpg";
 import img2 from "./assets/images/img/2.jpg";
 import img3 from "./assets/images/img/3.jpg";
-import Piano from "./components/Piano/Piano";
 function App() {
   //region return
   const steps = [
@@ -62,7 +61,6 @@ function App() {
     { id: 3, value: "step3" },
     { id: 4, value: "step4" },
   ];
-
   return (
     <>
       {/* <CssBaseline enableColorSchem={false} />*/}
@@ -70,7 +68,6 @@ function App() {
         <ErrorBoundary>
           <Router>
             <HeaderAndNavigationMenu />
-            <Piano />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />

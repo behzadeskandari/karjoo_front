@@ -15,9 +15,9 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  Switch,
   Toolbar,
   Typography,
+  Switch,
 } from "@mui/material";
 import {
   faEnvelope,
@@ -44,13 +44,16 @@ import {
   StarBorder,
 } from "@mui/icons-material";
 import { useThemeToggle } from "../../wrapper/ThemeProviderWrapper";
+
 export default function HeaderAndNavigationMenu() {
   //region COntext
   const toggleTheme = useThemeToggle();
   console.log(toggleTheme[0], "toggleTheme, isDarkMode");
   console.log(toggleTheme[1], "toggleTheme, isDarkMode");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const label = { inputProps: { "aria-label": "Size switch demo" } };
+  const label = {
+    inputProps: { "aria-label": "Size switch demo", color: "orange" },
+  };
   const drawerWidth = 320;
   const [open, setOpen] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -287,12 +290,17 @@ export default function HeaderAndNavigationMenu() {
             }}
           >
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff", fontFamily: "IRANSans" }}>
+              <Button
+                key={item}
+                color="secondary"
+                sx={{ fontFamily: "IRANSans" }}
+              >
                 {item}
               </Button>
             ))}
             <Button
-              sx={{ color: "#fff", fontFamily: "IRANSans" }}
+              color="secondary"
+              sx={{ fontFamily: "IRANSans" }}
               id="demo-positioned-button"
               aria-controls={openEl ? "demo-positioned-menu" : undefined}
               aria-haspopup="true"
@@ -321,8 +329,8 @@ export default function HeaderAndNavigationMenu() {
               }}
             >
               <MenuItem
+                color="secondary"
                 sx={{
-                  color: "#000",
                   textAlign: "right",
                   display: { xs: "none", sm: "block" },
                   fontFamily: "IRANSans",
@@ -337,9 +345,9 @@ export default function HeaderAndNavigationMenu() {
                 </Button>
               </MenuItem>
               <MenuItem
+                color="secondary"
                 sx={{
                   display: { xs: "none", sm: "block" },
-                  color: "#000",
                   textAlign: "right",
                   fontFamily: "IRANSans",
                 }}
@@ -348,9 +356,9 @@ export default function HeaderAndNavigationMenu() {
                 تست تیپ سنجی شغلی
               </MenuItem>
               <MenuItem
+                color="secondary"
                 sx={{
                   display: { xs: "none", sm: "block" },
-                  color: "#000",
                   textAlign: "right",
                   fontFamily: "IRANSans",
                 }}
@@ -359,9 +367,9 @@ export default function HeaderAndNavigationMenu() {
                 تست هوش چندگانه
               </MenuItem>
               <MenuItem
+                color="secondary"
                 sx={{
                   display: { xs: "none", sm: "block" },
-                  color: "#000",
                   textAlign: "right",
                   fontFamily: "IRANSans",
                 }}
@@ -370,9 +378,10 @@ export default function HeaderAndNavigationMenu() {
                 تست هوش هیجانی Bar-On
               </MenuItem>
               <MenuItem
+                color="secondary"
                 sx={{
                   display: { xs: "none", sm: "block" },
-                  color: "#000",
+
                   textAlign: "right",
                   fontFamily: "IRANSans",
                 }}
@@ -382,24 +391,6 @@ export default function HeaderAndNavigationMenu() {
               </MenuItem>
             </Menu>
 
-            <Box>
-              {toggleTheme[1] == true ? (
-                <Brightness5 color="primary.main" />
-              ) : (
-                <Brightness5 color="primary.main" />
-              )}
-
-              <Switch
-                {...label}
-                defaultChecked
-                color="primary.main"
-                size="medium"
-                onClick={toggleTheme[0]}
-              >
-                {/* {toggleTheme[1] ? "Light" : "Dark"}  */}
-              </Switch>
-              {toggleTheme[1] == false ? <Brightness3 /> : <Brightness3 />}
-            </Box>
             <Button
               color="secondary"
               onClick={handleNavigateToLogin}
@@ -425,6 +416,28 @@ export default function HeaderAndNavigationMenu() {
             >
               بخش کارفرمایان / ثبت آگهی
             </Button>
+            <Box>
+              {toggleTheme[1] == true ? (
+                <Brightness5 sx={{ color: "primary.icon" }} />
+              ) : (
+                <Brightness5 sx={{ color: "primary.icon" }} />
+              )}
+
+              <Switch
+                {...label}
+                defaultChecked
+                color="warning"
+                size="medium"
+                onClick={toggleTheme[0]}
+              >
+                {/* {toggleTheme[1] ? "Light" : "Dark"}  */}
+              </Switch>
+              {toggleTheme[1] == false ? (
+                <Brightness3 sx={{ color: "primary.icon" }} />
+              ) : (
+                <Brightness3 sx={{ color: "primary.icon" }} />
+              )}
+            </Box>
           </Box>
         </Toolbar>
       </AppBar>

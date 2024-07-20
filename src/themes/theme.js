@@ -100,16 +100,27 @@ const theme = createTheme({
       primary: "#000000",
     },
     primary: {
-      main: "#93c47d",
+      main: "#F1F1F1",
+      icon: "orange",
     },
     secondary: {
-      main: "#fff",
+      main: "#000",
+      grey: "#DAE0EA",
+      lgrey: "#B3BBCA",
+      test: "box-shadow: rgb(216 216 216 / 24%) 0px 3px 8px; border-radius: 7px;",
+    },
+    common: {
+      main: "#000",
+      grey: "#DAE0EA",
+      lgrey: "#B3BBCA",
+      icon: "#ff9933",
     },
     success: {
-      main: "#93c47d",
+      main: "#F1F1F1",
     },
     info: {
       main: "#bf9000",
+      orange: "#EE6C4D",
     },
   },
   components: {},
@@ -127,10 +138,20 @@ const darkTheme = createTheme({
       disabled: "#efefef",
     },
     primary: {
-      main: "#93c47d",
+      main: "#EE6C4D",
+      icon: "orange",
     },
     secondary: {
       main: "#d7d4d4",
+      grey: "#293241",
+      lgrey: "#4F5D75",
+      test: "box-shadow: rgb(216 216 216 / 24%) 0px 3px 8px; border-radius: 7px;",
+    },
+    common: {
+      main: "#000",
+      grey: "#DAE0EA",
+      lgrey: "#B3BBCA",
+      icon: "#ff9933",
     },
     success: {
       main: "#4a4e57",

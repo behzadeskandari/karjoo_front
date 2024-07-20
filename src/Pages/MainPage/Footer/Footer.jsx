@@ -28,7 +28,7 @@ export default function Footer({ isDesktop, logo }) {
   };
   return (
     <Box
-      bgcolor={"success.main"}
+      bgcolor={"secondary.lgrey"}
       // className="pad-none"
       sx={{
         // width: "100%",
@@ -148,10 +148,10 @@ export default function Footer({ isDesktop, logo }) {
             : "col-12 col-md-12 mt-2 NamadsHolder py-4"
         }`}
       >
-        <Box bgcolor={"info.main"} className="background-white">
+        <Box bgcolor={"info.orange"} className="background-white">
           <img src={logo} alt="enamad" />
         </Box>
-        <Box bgcolor={"info.main"} className="background-white ">
+        <Box bgcolor={"info.orange"} className="background-white ">
           <img src={logo} alt="samandehi.ir" />
         </Box>
       </div>

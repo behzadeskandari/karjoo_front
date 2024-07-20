@@ -16,7 +16,7 @@ const QuestionAnswer = ({ question, answer, index, isDesktop }) => {
     >
       <Box
         component={"section"}
-        bgcolor={"info.main"}
+        bgcolor={"info.orange"}
         color={"text.secondary"}
         className={`questionSection col-12 col-md-12 ${
           isAnswerVisible ? "borderbottom " : isDesktop ? "" : ""
@@ -28,7 +28,7 @@ const QuestionAnswer = ({ question, answer, index, isDesktop }) => {
       </Box>
       {isAnswerVisible && (
         <Box
-          bgcolor={"info.main"}
+          bgcolor={"info.orange"}
           color={"text.secondary"}
           component={"section"}
           className={`${
